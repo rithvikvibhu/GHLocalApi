@@ -1,0 +1,86 @@
+FORMAT:  1A
+
+# Group Device Info
+
+## Get configured networks [/setup/get_app_device_id]
+### Get configured networks [POST]
+
+  + Request (application/json)
+      { "app_id": "E8C28D3C" }
+
+  + Response 200 (application/json)
+      {
+        "app_device_id": "xxxxx",
+        "certificate": "-----BEGIN CERTIFICATE-----\nxxxxxx\n-----END CERTIFICATE-----\n",
+        "signed_data": "xxxxx"
+      }
+
+
+## Get configured networks [/setup/offer]
+### Get configured networks [GET]
+
+  + Request
+
+  + Response 200 (application/json)
+      {
+        "token": "xxxxxqR8aQ=="
+      }
+
+
+## Get device info [/setup/eureka_info?params=&options=]
+**Note:**
+params: Comma separated combination of values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
+### Get device info [GET]
+
+  + Request
+    ?params=version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
+
+  + Response 200 (application/json)
+      {
+        "token": "xxxxxqR8aQ=="
+      }
+
+
+## Get supported timezones [/setup/supported_timezones]
+### Get supported timezones [GET]
+  + Request
+
+  + Response 200 (application/json)
+      [
+        {
+          "display_string": "Samoa Standard Time (Midway)",
+          "offset": -660,
+          "timezone": "Pacific/Midway"
+        }, {
+          "display_string": "Hawaii-Aleutian Standard Time (Honolulu)",
+          "offset": -600,
+          "timezone": "Pacific/Honolulu"
+        }, {
+          "display_string": "Alaska Standard Time (Anchorage)",
+          "offset": -540,
+          "timezone": "America/Anchorage"
+        },
+        ...
+      ]
+
+
+## Get supported locales [/setup/supported_locales]
+### Get supported locales [GET]
+  + Request
+
+  + Response 200 (application/json)
+      [
+        {
+          "display_string": "English (United States)",
+          "locale": "en-US"
+        }, {
+        {
+          "display_string": "German - Deutsch",
+          "locale": "de"
+        }, {
+        {
+          "display_string": "English (United Kingdom)",
+          "locale": "en-GB"
+        },
+        ...
+      ]
