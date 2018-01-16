@@ -11,7 +11,6 @@ GET /setup/configured_networks
 POST /setup/get_app_device_id
 GET /setup/offer
 GET /setup/eureka_info
-POST /setup/assistant/a11y_mode
 GET /setup/supported_timezones
 GET /setup/supported_locales
 
@@ -20,10 +19,9 @@ POST /setup/set_eureka_info
 POST /setup/assistant/set_night_mode_params
 /setup/reboot
 
-### Alarms, Timers and Volume
+### Assistant tasks
+POST /setup/assistant/notifications
+POST /setup/assistant/a11y_mode
 GET /setup/assistant/alarms
 POST /setup/assistant/alarms/volume
 POST /setup/user_eq/set_equalizer
-
-### Others
-POST /setup/assistant/notifications
