@@ -1,0 +1,24 @@
+
+branches:
+  only:
+  - master
+
+language: node_js
+node_js: 8
+
+before_script:
+- git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+- cd $TRAVIS_REPO_SLUG
+- git checkout -qf $TRAVIS_BRANCH
+- npm i aglio
+- git config --global user.email "rithvikvibhu@gmail.com"
+- git config --global user.name "Travis CI"
+
+script:
+- aglio -i ghapi.apib -o index.html
+
+after_success:
+- git checkout gh-pages
+- git add .
+- git commit -m "Updating gh-pages" || true
+- git push origin gh-pages > /dev/null 2>&1 || true
