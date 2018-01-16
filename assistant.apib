@@ -1,0 +1,83 @@
+
+FORMAT: 1A
+
+# Group Assistant tasks
+
+
+## Get / Set assistant notification state [/setup/assistant/notifications]
+**Note:** To get current state, send empty body. To set state, send this as json
+### Get / Set assistant notification state [POST]
+
+  + Request (application/json)
+      { "notifications_enabled": true }
+
+  + Response 200 (application/json)
+      { "notifications_enabled": true }
+
+
+## Get accessibility state [/setup/assistant/a11y_mode]
+**Note:** To get current state, send empty body. To set state, send this as json
+### Get accessibility state [POST]
+
+  + Request
+
+  + Response 200 (application/json)
+      {
+        "endpoint_enabled": false,
+        "hotword_enabled": true
+      }
+
+
+## Get alarms and timers [/setup/assistant/alarms]
+### Get alarms and timers [GET]
+
+  + Request
+
+  + Response 200 (application/json)
+      {
+        "alarm": [
+          {
+            "date_pattern": {
+              "day": 15,
+              "month": 1,
+              "year": 2018
+            },
+            "time_pattern": {
+              "hour": 6,
+              "minute": 50,
+              "second": 0
+            },
+            "fire_time": 1515995400000.0,
+            "id": "alarm/5a77ecee-0000-24fd-9251-001a114cb4cc",
+            "status": 1,
+          }
+          ...
+        ],
+        "timer": []
+      }
+
+
+## Get alarms and timers volume [/setup/assistant/alarms/volume]
+**Note:** Even though this is a POST, it only retrieves the volume, not set it.
+### Get alarms and timers [POST]
+
+  + Request
+
+  + Response 200 (application/json)
+      {"volume":0.8199999928474426}
+
+
+## Set equalizer settings [/setup/user_eq/set_equalizer]
+### Set equalizer settings [POST]
+
+  + Request (application/json)
+      {
+        "low_shelf": {
+          "gain_db": 1
+        },
+        "high_shelf": {
+          "gain_db": 1
+        }
+      }
+
+  + Response 200

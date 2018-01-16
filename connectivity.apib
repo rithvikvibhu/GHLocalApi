@@ -1,4 +1,4 @@
-FORMAT: 1A
+FORMAT:  1A
 
 # Group Connectivity
 
@@ -10,10 +10,10 @@ FORMAT: 1A
   + Response 200 (application/json)
       [
         {
-          "ssid":"Wifi name",
-          "wpa_auth":7,
-          "wpa_cipher":4,
-          "wpa_id":0
+          "ssid": "Wifi name",
+          "wpa_auth": 7,
+          "wpa_cipher": 4,
+          "wpa_id": 0
         },
         ...
       ]
@@ -32,14 +32,14 @@ Not tested
   + Response 200 (application/json)
       [
         {
-          "bond_date":1503212407260.55,
-          "device_class":5898764,
-          "device_type":1,
-          "last_connect_date":1514807829482.111,
-          "mac_address":"xx:xx:xx:xx:xx:xx",
-          "name":"Device Name",
-          "rssi":-255,
-          "service_uuids":[
+          "bond_date": 1503212407260.55,
+          "device_class": 5898764,
+          "device_type": 1,
+          "last_connect_date": 1514807829482.111,
+          "mac_address": "xx: xx: xx: xx: xx: xx",
+          "name": "Device Name",
+          "rssi": -255,
+          "service_uuids": [
             "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             ...
@@ -52,6 +52,6 @@ Not tested
 ### Set bluetoot discoverable [POST]
 
   + Request (application/json)
-      {"enable_discovery":true}
+      {"enable_discovery": true}
 
   + Response 200
