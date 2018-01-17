@@ -1,5 +1,6 @@
 
 # Group Device Settings
+Change various device settings
 
 ## Set device options [/setup/set_eureka_info]
 **Note:** Any combination of fields can be used.
@@ -23,7 +24,11 @@
 
 
 ## Set night mode settings [/setup/assistant/set_night_mode_params]
+Set night mode settings.
 **Note:** Any combination of fields can be used.
+
+**Control normal volume with night mode**  
+Since normal volume can be controlled for night mode, if night mode is active throughout the day, it might be possible to use it as a workaround for controlling normal volume. [_Testing needed_]
 ### Set night mode settings [POST]
 
   + Request (application/json)
@@ -31,6 +36,7 @@
         "enabled": false,
         "do_not_disturb": true,
         "led_brightness": 0.44999998807907104,
+        "volume":0.46000000834465027,
         "demo_to_user": true,
         "windows": [
           {
@@ -45,5 +51,10 @@
 
 
 ## Reboot device [/setup/reboot]
+Reboot the device.
 ### Get configured networks [POST]
-Not tested
+
+  + Request (application/json)
+      { "params": "now" }
+
+  + Response 200

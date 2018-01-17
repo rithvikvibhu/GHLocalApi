@@ -1,8 +1,20 @@
 
 # Google Home Local API
 
-This is an unofficial documentation of the local API.
-To contribute, take a look at [the GitHub repo](https://github.com/rithvikvibhu/GHLocalApi)
+This is an unofficial documentation of the local API used by the Home app to communicate with the device.
+
+### Getting Started
+
+The port for the http server is `8008` so the base url for these endpoints is:  
+`http://<google-home-ip>:8080`  
+Get the IP of Google Home from the Google Home app (Device Settings -> End of list) or from your router.
+
+There is no auth mechanism in place as of now.
+
+GET requests are simple, in the browser kind.  
+POST requests need to set the header: `content-type: application/json`
+
+[View on GitHub](https://github.com/rithvikvibhu/GHLocalApi)
 
 <!-- include(assistant.apib) -->
 <!-- include(connectivity.apib) -->

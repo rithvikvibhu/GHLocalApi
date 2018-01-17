@@ -1,7 +1,9 @@
 
 # Group Connectivity
+Everything related to Wifi and Bluetooth
 
 ## Get configured networks [/setup/configured_networks]
+Get a list of all saved WiFi networks (no passwords obviously)
 ### Get configured networks [GET]
 
   + Request
@@ -19,11 +21,13 @@
 
 
 ## Connect to Wifi [/setup/connect_wifi]
+Connect to a new wifi network.
 ### Connect to Wifi [GET]
 Not tested
 
 
 ## Get bluetooth bonded devices [/setup/bluetooth/get_bonded]
+Get a list of all paired bluetooth devices.
 ### Get bluetooth bonded devices [GET]
 
   + Request
@@ -48,9 +52,10 @@ Not tested
 
 
 ## Set bluetooth discoverable [/setup/bluetooth/discovery]
+Temporarily turn on bluetooth discoveribility. Used to connect new devices.
 ### Set bluetooth discoverable [POST]
 
   + Request (application/json)
-      {"enable_discovery": true}
+      { "enable_discovery": true }
 
   + Response 200

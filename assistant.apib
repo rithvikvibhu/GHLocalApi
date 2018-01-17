@@ -1,9 +1,10 @@
 
 # Group Assistant tasks
-
+Everything related to the assistant part of Google Home.
 
 ## Get / Set assistant notification state [/setup/assistant/notifications]
-**Note:** To get current state, send empty body. To set state, send this as json
+This is the Do Not Disturb setting in the Home app.  
+**Note:** To get current state, send empty body. To set state, send this as json. Both must be POST.
 ### Get / Set assistant notification state [POST]
 
   + Request (application/json)
@@ -14,7 +15,9 @@
 
 
 ## Get accessibility state [/setup/assistant/a11y_mode]
-**Note:** To get current state, send empty body. To set state, send this as json
+This relates to the Accessibility settings.  
+**Note:** To get current state, send empty body. To set state, send this as json.
+Any combination of fields can be used.
 ### Get accessibility state [POST]
 
   + Request
@@ -27,6 +30,10 @@
 
 
 ## Get alarms and timers [/setup/assistant/alarms]
+Get the currently set alarms and timers.
+
+For alarms: `status`: `1` for set up and `2` for currently ringing.  
+For alarms: `status`: `1` for set up and `3` for currently ringing.
 ### Get alarms and timers [GET]
 
   + Request
@@ -46,26 +53,39 @@
               "second": 0
             },
             "fire_time": 1515995400000.0,
-            "id": "alarm/5a77ecee-0000-24fd-9251-001a114cb4cc",
+            "id": "alarm/xxx",
             "status": 1,
           }
           ...
         ],
-        "timer": []
+        "timer": [
+          {
+            "fire_time": 1516176765589,
+            "id": "timer/xxx",
+            "original_duration": 20000,
+            "status": 1
+          },
+          ...
+        ]
       }
 
 
-## Get alarms and timers volume [/setup/assistant/alarms/volume]
-**Note:** Even though this is a POST, it only retrieves the volume, not set it.
-### Get alarms and timers [POST]
+## Get / Set alarms and timers volume [/setup/assistant/alarms/volume]
+Get or set volume for alarms and timers. This is *not* the same as the normal volume.  
+To control normal volume, there is a possible workaround (untested). See Night Mode endpoint under Device Settings on this page.  
+**Note:** To get current volume, send empty body. To set state, send this as json.
+### Get / Set alarms and timers [POST]
 
-  + Request
+  + Request (application/json)
+      { "volume":0.8199999928474426 }
 
   + Response 200 (application/json)
-      {"volume":0.8199999928474426}
+      { "volume":0.8199999928474426 }
 
 
 ## Set equalizer settings [/setup/user_eq/set_equalizer]
+Set equalizer settings.
+**Note:** Any combination of fields can be used.
 ### Set equalizer settings [POST]
 
   + Request (application/json)

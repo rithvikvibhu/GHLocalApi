@@ -1,8 +1,10 @@
 
 # Group Device Info
+Get all kinds of info.
 
-## Get configured networks [/setup/get_app_device_id]
-### Get configured networks [POST]
+## Get app device id [/setup/get_app_device_id]
+Not used anywhere locally. Must be related to one of the cloud functions.
+### Get app device id [POST]
 
   + Request (application/json)
       { "app_id": "E8C28D3C" }
@@ -15,8 +17,9 @@
       }
 
 
-## Get configured networks [/setup/offer]
-### Get configured networks [GET]
+## Get offers [/setup/offer]
+Gets a token which can presumably be used to get offers online. Not used anywhere locally.
+### Get offers [GET]
 
   + Request
 
@@ -26,9 +29,10 @@
       }
 
 
-## Get device info [/setup/eureka_info?params=&options=]
+## Get device info [/setup/eureka_info?options=detail&params=]
+Get information about device and some states.
 **Note:**
-params: Comma separated combination of values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
+params: Comma separated combination of these values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
 ### Get device info [GET]
 
   + Request
@@ -189,6 +193,7 @@ params: Comma separated combination of values: `version,name,build_info,device_i
 
 
 ## Get supported timezones [/setup/supported_timezones]
+Get a list of supported timezones. Used while setting Night Mode.
 ### Get supported timezones [GET]
   + Request
 
@@ -212,6 +217,7 @@ params: Comma separated combination of values: `version,name,build_info,device_i
 
 
 ## Get supported locales [/setup/supported_locales]
+Get a list of supported locales. Used while setting Night Mode.
 ### Get supported locales [GET]
   + Request
 
