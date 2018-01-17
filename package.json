@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "dist": "mkdir dist && aglio -i ghapi.apib -o dist/index.html"
+    },
+    "dependencies": {
+        "aglio": "^2.3.0"
+    }
+}
