@@ -29,11 +29,15 @@ Gets a token which can presumably be used to get offers online. Not used anywher
       }
 
 
-## Get device info [/setup/eureka_info?options=detail&params=]
+## Get device info [/setup/eureka_info?{options}=detail&{params}=]
 Get information about device and some states.
 **Note:**
 params: Comma separated combination of these values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
 ### Get device info [GET]
+
+  + Parameters
+      + params
+      + options
 
   + Request
     ?params=version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
