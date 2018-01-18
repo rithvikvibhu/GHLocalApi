@@ -37,6 +37,16 @@ Connect to a new wifi network.
   + Response 200
 
 
+## Forget Wifi network [/setup/forget_wifi]
+Forget a wifi network. Get `wpa_id` using `/setup/eureka_info`.
+### Forget Wifi network [POST]
+
+  + Request (application/json)
+      { "wpa_id": 1 }
+  
+  + Response 200
+
+
 ## Get bluetooth bonded devices [/setup/bluetooth/get_bonded]
 Get a list of all paired bluetooth devices.
 ### Get bluetooth bonded devices [GET]
@@ -50,7 +60,7 @@ Get a list of all paired bluetooth devices.
           "device_class": 5898764,
           "device_type": 1,
           "last_connect_date": 1514807829482.111,
-          "mac_address": "xx: xx: xx: xx: xx: xx",
+          "mac_address": "xx:xx:xx:xx:xx:xx",
           "name": "Device Name",
           "rssi": -255,
           "service_uuids": [
@@ -61,6 +71,18 @@ Get a list of all paired bluetooth devices.
         }
       ]
 
+
+## Forget bluetooth bonded device [/setup/bluetooth/bond]
+Forget a paired bluetooth device.
+### Forget bluetooth bonded device [POST]
+
+  + Request (application/json)
+      {
+        "mac_address": "xx:xx:xx:xx:xx:xx",
+        "bond": false
+      }
+
+  + Response 200
 
 ## Set bluetooth discoverable [/setup/bluetooth/discovery]
 Temporarily turn on bluetooth discoveribility. Used to connect new devices.

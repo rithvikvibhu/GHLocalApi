@@ -32,7 +32,7 @@ Gets a token which can presumably be used to get offers online. Not used anywher
 ## Get device info [/setup/eureka_info?{options}=detail&{params}=]
 Get information about device and some states.
 **Note:**
-params: Comma separated combination of these values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
+params: Comma separated combination of these values: `version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
 ### Get device info [GET]
 
   + Parameters
@@ -40,7 +40,7 @@ params: Comma separated combination of these values: `version,name,build_info,de
       + options
 
   + Request
-    ?params=version,audio,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
+    ?params=version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
 
   + Response 200 (application/json)
       {
@@ -54,6 +54,22 @@ params: Comma separated combination of these values: `version,name,build_info,de
         },
         "audio": {
           "digital": false
+        },
+        "detail": {
+          "icon_list": [{
+            "depth": 32,
+            "height": 55,
+            "mimetype": "image/png",
+            "url": "/setup/icon.png",
+            "width": 98
+          }],
+          "locale": {
+            "display_string": "English (United States)"
+          },
+          "timezone": {
+            "display_string": "India Standard Time (Kolkata)",
+            "offset": 330
+          }
         },
         "device_info": {
         "4k_blocked": 0,
