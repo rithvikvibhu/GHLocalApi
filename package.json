@@ -1,8 +1,9 @@
 {
     "scripts": {
-        "dist": "mkdir dist && aglio -i ghapi.apib -o dist/index.html"
+        "dist": "node ./dist.js"
     },
     "dependencies": {
-        "aglio": "^2.3.0"
+        "aglio": "^2.3.0",
+        "fs-extra": "^5.0.0"
     }
 }
