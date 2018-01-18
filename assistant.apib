@@ -2,34 +2,68 @@
 # Group Assistant tasks
 Everything related to the assistant part of Google Home.
 
-## Get / Set assistant notification state [/setup/assistant/notifications]
-This is the Do Not Disturb setting in the Home app.  
-**Note:** To get current state, send empty body. To set state, send this as json. Both must be POST.
-### Get / Set assistant notification state [POST]
 
-  + Request (application/json)
-      { "notifications_enabled": true }
+## Do Not Disturb [/setup/assistant/notifications]
+This is the Do Not Disturb setting in the Home app.
+
+### Get Do Not Disturb state [POST]
+
+  + Request
 
   + Response 200 (application/json)
-      { "notifications_enabled": true }
+      + Attributes
+          + notifications_enabled (boolean) - Do Not Disturb state
+      + Body
+          { "notifications_enabled": true }
+
+### Set Do Not Disturb state [POST]
+
+  + Request (application/json)
+      + Attributes
+          + notifications_enabled (boolean) - Do Not Disturb state
+      + Body
+          { "notifications_enabled": true }
+
+  + Response 200 (application/json)
+      + Attributes
+          + notifications_enabled (boolean) - Do Not Disturb state
+      + Body
+          { "notifications_enabled": true }
 
 
-## Get accessibility state [/setup/assistant/a11y_mode]
+## Accessibility [/setup/assistant/a11y_mode]
 This relates to the Accessibility settings.  
-**Note:** To get current state, send empty body. To set state, send this as json.
-Any combination of fields can be used.
+
 ### Get accessibility state [POST]
 
   + Request
 
   + Response 200 (application/json)
-      {
-        "endpoint_enabled": false,
-        "hotword_enabled": true
-      }
+      + Attributes
+          + hotword_enabled (boolean) - Beep sound at start of request
+          + endpoint_enabled (boolean) - Beep sound at end of request
+      + Body
+          {
+            "endpoint_enabled": false,
+            "hotword_enabled": true
+          }
+
+### Set accessibility state [POST]
+
+  + Request
+
+  + Response 200 (application/json)
+      + Attributes
+          + hotword_enabled (boolean) - Beep sound at start of request
+          + endpoint_enabled (boolean) - Beep sound at end of request
+      + Body
+          {
+            "endpoint_enabled": false,
+            "hotword_enabled": true
+          }
 
 
-## Get alarms and timers [/setup/assistant/alarms]
+## Alarms and timers [/setup/assistant/alarms]
 Get the currently set alarms and timers.
 
 For alarms: `status`: `1` for set up and `2` for currently ringing.  
@@ -39,63 +73,85 @@ For timers: `status`: `1` for set up and `3` for currently ringing.
   + Request
 
   + Response 200 (application/json)
-      {
-        "alarm": [
+      + Body
           {
-            "date_pattern": {
-              "day": 15,
-              "month": 1,
-              "year": 2018
-            },
-            "time_pattern": {
-              "hour": 6,
-              "minute": 50,
-              "second": 0
-            },
-            "fire_time": 1515995400000.0,
-            "id": "alarm/xxx",
-            "status": 1,
+            "alarm": [
+              {
+                "date_pattern": {
+                  "day": 15,
+                  "month": 1,
+                  "year": 2018
+                },
+                "time_pattern": {
+                  "hour": 6,
+                  "minute": 50,
+                  "second": 0
+                },
+                "fire_time": 1515995400000.0,
+                "id": "alarm/xxx",
+                "status": 1,
+              }
+              ...
+            ],
+            "timer": [
+              {
+                "fire_time": 1516176765589,
+                "id": "timer/xxx",
+                "original_duration": 20000,
+                "status": 1
+              },
+              ...
+            ]
           }
-          ...
-        ],
-        "timer": [
-          {
-            "fire_time": 1516176765589,
-            "id": "timer/xxx",
-            "original_duration": 20000,
-            "status": 1
-          },
-          ...
-        ]
-      }
 
 
-## Get / Set alarms and timers volume [/setup/assistant/alarms/volume]
+## Alarms and timers volume [/setup/assistant/alarms/volume]
 Get or set volume for alarms and timers. This is *not* the same as the normal volume.  
-To control normal volume, there is a possible workaround (untested). See Night Mode endpoint under Device Settings on this page.  
-**Note:** To get current volume, send empty body. To set state, send this as json.
-### Get / Set alarms and timers [POST]
+To control normal volume, there is a possible workaround (untested). See Night Mode endpoint under Device Settings on this page.
 
-  + Request (application/json)
-      { "volume":0.8199999928474426 }
+### Get alarms and timers volume [POST]
+
+  + Request
 
   + Response 200 (application/json)
-      { "volume":0.8199999928474426 }
+      + Attributes
+          + volume (number) - Float value from 0 to 1 for volume
+      + Body
+          { "volume":0.8199999928474426 }
+
+### Set alarms and timers volume [POST]
+
+  + Response 200 (application/json)
+      + Attributes
+          + volume (number) - Float value from 0 to 1 for volume
+      + Body
+          { "volume":0.8199999928474426 }
+
+  + Response 200 (application/json)
+      + Attributes
+          + volume (number) - Float value from 0 to 1 for volume
+      + Body
+          { "volume":0.8199999928474426 }
 
 
 ## Set equalizer settings [/setup/user_eq/set_equalizer]
 Set equalizer settings.
-**Note:** Any combination of fields can be used.
 ### Set equalizer settings [POST]
 
   + Request (application/json)
-      {
-        "low_shelf": {
-          "gain_db": 1
-        },
-        "high_shelf": {
-          "gain_db": 1
-        }
-      }
+      + Attributes
+          + low_shelf (object)
+              + gain_db (number) - Integer from -6 to 6 for Bass
+          + high_shelf (object)
+              + gain_db (number) - Integer from -6 to 6 for Treble
+      + Body
+          {
+            "low_shelf": {
+              "gain_db": 1
+            },
+            "high_shelf": {
+              "gain_db": 1
+            }
+          }
 
   + Response 200
