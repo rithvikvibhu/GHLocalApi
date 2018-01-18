@@ -40,7 +40,7 @@ params: Comma separated combination of these values: `version,name,build_info,de
       + options
 
   + Request
-    ?params=version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
+    ?params=version,audio,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
 
   + Response 200 (application/json)
       {
@@ -51,6 +51,9 @@ params: Comma separated combination of these values: `version,name,build_info,de
           "preview_channel_state": 4,
           "release_track": "preview-joining-stable-channel",
           "system_build_number": "106111"
+        },
+        "audio": {
+          "digital": false
         },
         "device_info": {
         "4k_blocked": 0,
