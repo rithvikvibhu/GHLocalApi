@@ -1,0 +1,766 @@
+FORMAT: 1A
+HOST: http://ghlocalapi.apiblueprint.org/
+
+
+
+
+# Google Home Local API
+
+This is an unofficial documentation of the local API used by the Home app to communicate with the device.
+
+### Getting Started
+
+The port for the http server is `8008` so the base url for these endpoints is:  
+`http://<google-home-ip>:8008`  
+Get the IP of Google Home from the Google Home app (Device Settings -> End of list) or from your router.
+
+There is no auth mechanism in place as of now.
+
+GET requests are simple, in the browser kind.  
+POST requests need to set the header: `content-type: application/json`
+
+[View on GitHub](https://github.com/rithvikvibhu/GHLocalApi)
+
+
+
+
+# Group Assistant tasks
+Everything related to the assistant part of Google Home.
+
+
+## Do Not Disturb [/setup/assistant/notifications]
+This is the Do Not Disturb setting in the Home app.
+
+### Get Do Not Disturb state [POST]
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + notifications_enabled (boolean) - Do Not Disturb state
+
+    + Body
+
+        ```
+        { "notifications_enabled": true }
+        ```
+
+### Set Do Not Disturb state [POST]
+
++ Request (application/json)
+
+    + Attributes
+
+        + notifications_enabled (boolean) - Do Not Disturb state
+    
+    + Body
+
+        ```
+        { "notifications_enabled": true }
+        ```
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + notifications_enabled (boolean) - Do Not Disturb state
+    
+    + Body
+
+        ```
+        { "notifications_enabled": true }
+        ```
+
+
+## Accessibility [/setup/assistant/a11y_mode]
+This relates to the Accessibility settings.  
+
+### Get accessibility state [POST]
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + hotword_enabled (boolean) - Beep sound at start of request
+        + endpoint_enabled (boolean) - Beep sound at end of request
+
+    + Body
+
+        ```
+        {
+            "endpoint_enabled": false,
+            "hotword_enabled": true
+        }
+        ```
+
+### Set accessibility state [POST]
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + hotword_enabled (boolean) - Beep sound at start of request
+        + endpoint_enabled (boolean) - Beep sound at end of request
+
+    + Body
+    
+        ```
+        {
+            "endpoint_enabled": false,
+            "hotword_enabled": true
+        }
+        ```
+
+
+## Alarms and timers [/setup/assistant/alarms]
+Get the currently set alarms and timers.
+
+For alarms: `status`: `1` for set up and `2` for currently ringing.  
+For timers: `status`: `1` for set up and `3` for currently ringing.
+### Get alarms and timers [GET]
+
++ Response 200 (application/json)
+
+    + Body
+    
+        ```
+        {
+            "alarm": [
+                {
+                    "date_pattern": {
+                      "day": 15,
+                      "month": 1,
+                      "year": 2018
+                    },
+                    "time_pattern": {
+                      "hour": 6,
+                      "minute": 50,
+                      "second": 0
+                    },
+                    "fire_time": 1515995400000.0,
+                    "id": "alarm/xxx",
+                    "status": 1,
+                },
+                ...
+            ],
+            "timer": [
+                {
+                    "fire_time": 1516176765589,
+                    "id": "timer/xxx",
+                    "original_duration": 20000,
+                    "status": 1
+                },
+                ...
+            ]
+        }
+        ```
+
+
+## Alarms and timers volume [/setup/assistant/alarms/volume]
+Get or set volume for alarms and timers. This is *not* the same as the normal volume.  
+To control normal volume, there is a possible workaround (untested). See Night Mode endpoint under Device Settings on this page.
+
+### Get alarms and timers volume [POST]
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + volume (number) - Float value from 0 to 1 for volume
+
+    + Body
+    
+        ```
+        { "volume":0.8199999928474426 }
+        ```
+
+### Set alarms and timers volume [POST]
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + volume (number) - Float value from 0 to 1 for volume
+
+    + Body
+    
+        ```
+        { "volume":0.8199999928474426 }
+        ```
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + volume (number) - Float value from 0 to 1 for volume
+
+    + Body
+    
+        ```
+        { "volume":0.8199999928474426 }
+        ```
+
+
+## Set equalizer settings [/setup/user_eq/set_equalizer]
+Set equalizer settings.
+### Set equalizer settings [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + low_shelf (object)
+            + gain_db (number) - Integer from -6 to 6 for Bass
+        + high_shelf (object)
+            + gain_db (number) - Integer from -6 to 6 for Treble
+
+    + Body
+    
+        ```
+        {
+            "low_shelf": {
+                "gain_db": 1
+            },
+            "high_shelf": {
+                "gain_db": 1
+            }
+        }
+        ```
+
++ Response 200
+
+
+
+
+# Group Connectivity
+Everything related to Wifi and Bluetooth
+
+
+## Get configured networks [/setup/configured_networks]
+Get a list of all saved WiFi networks (no passwords obviously)
+### Get configured networks [GET]
+
++ Response 200 (application/json)
+
+    ```
+    [
+        {
+          "ssid": "Wifi name",
+          "wpa_auth": 7,
+          "wpa_cipher": 4,
+          "wpa_id": 0
+        },
+        ...
+    ]
+    ```
+
+
+## Connect to Wifi [/setup/connect_wifi]
+Connect to a new wifi network.
+### Connect to Wifi [POST]
+
++ Request
+
+    ```
+    {
+        “bssid”: ”5c:0a:xx:xx:xx:xx”,
+        ”signal_level”: -42,
+        ”ssid”: ”myotherssid”,
+        ”wpa_auth”: 7,
+        ”wpa_cipher”: 4,
+        ”enc_passwd”: ”xxxxxfPY=”
+    }
+    ```
+  
++ Response 200
+
+
+## Forget Wifi network [/setup/forget_wifi]
+Forget a wifi network. Get `wpa_id` using `/setup/eureka_info`.
+### Forget Wifi network [POST]
+
++ Request (application/json)
+    
+    ```
+    { "wpa_id": 1 }
+    ```
+  
++ Response 200
+
+
+## Get bluetooth bonded devices [/setup/bluetooth/get_bonded]
+Get a list of all paired bluetooth devices.
+### Get bluetooth bonded devices [GET]
+
++ Response 200 (application/json)
+
+    ```
+    [
+        {
+            "bond_date": 1503212407260.55,
+            "device_class": 5898764,
+            "device_type": 1,
+            "last_connect_date": 1514807829482.111,
+            "mac_address": "xx:xx:xx:xx:xx:xx",
+            "name": "Device Name",
+            "rssi": -255,
+            "service_uuids": [
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                ...
+            ]
+        },
+        ...
+      ]
+      ```
+
+
+## Forget bluetooth bonded device [/setup/bluetooth/bond]
+Forget a paired bluetooth device.
+### Forget bluetooth bonded device [POST]
+
++ Request (application/json)
+
+    ```
+    {
+        "mac_address": "xx:xx:xx:xx:xx:xx",
+        "bond": false
+    }
+    ```
+
++ Response 200
+
+
+## Set bluetooth discoverable [/setup/bluetooth/discovery]
+Temporarily turn on bluetooth discoveribility. Used to connect new devices.
+### Set bluetooth discoverable [POST]
+
++ Request (application/json)
+
+    ```
+    { "enable_discovery": true }
+    ```
+
++ Response 200
+
+
+## Connect / Disconnect bluetooth device [/setup/bluetooth/connect]
+Connect or disconnect an existing bluetooth device. To disconnect, send `false` instead of `true`.  
+**Note:** This is not the same as pairing and forgetting a device.
+### Connect / Disconnect bluetooth device [POST]
+
++ Request (application/json)
+    
+    ```
+        { "connect": true }
+    ```
+
++ Response 200
+
+
+
+
+# Group Device Info
+Get all kinds of info.
+
+
+## Get app device id [/setup/get_app_device_id]
+Not used anywhere locally. Must be related to one of the cloud functions.
+### Get app device id [POST]
+
++ Request (application/json)
+
+    ```
+    { "app_id": "E8C28D3C" }
+    ```
+
++ Response 200 (application/json)
+
+    ```
+    {
+        "app_device_id": "xxxxx",
+        "certificate": "-----BEGIN CERTIFICATE-----\nxxxxxx\n-----END CERTIFICATE-----\n",
+        "signed_data": "xxxxx"
+    }
+    ```
+
+
+## Get offers [/setup/offer]
+Gets a token which can presumably be used to get offers online. Not used anywhere locally.
+### Get offers [GET]
+
++ Response 200 (application/json)
+    
+    ```
+    {
+        "token": "xxxxxqR8aQ=="
+    }
+    ```
+
+
+## Get device info [/setup/eureka_info?{options}=detail&{params}=]
+Get information about device and some states.  
+**Note:**
+params: Comma separated combination of these values: `version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
+### Get device info [GET]
+
++ Parameters
+    + params
+    + options
+
++ Response 200 (application/json)
+    
+    ```
+    {
+        "build_info": {
+            "build_type": 2,
+            "cast_build_revision": "1.29.106111",
+            "cast_control_version": 1,
+            "preview_channel_state": 4,
+            "release_track": "preview-joining-stable-channel",
+            "system_build_number": "106111"
+        },
+        "audio": {
+            "digital": false
+        },
+        "detail": {
+            "icon_list": [{
+                "depth": 32,
+                "height": 55,
+                "mimetype": "image/png",
+                "url": "/setup/icon.png",
+                "width": 98
+            }],
+            "locale": {
+                "display_string": "English (United States)"
+            },
+            "timezone": {
+                "display_string": "India Standard Time (Kolkata)",
+                "offset": 330
+            }
+        },
+        "device_info": {
+            "4k_blocked": 0,
+            "capabilities": {
+                "assistant_supported": true,
+                "audio_hdr_supported": false,
+                "ble_supported": true,
+                "bluetooth_audio_sink_supported": true,
+                "bluetooth_audio_source_supported": false,
+                "bluetooth_supported": true,
+                "cloudcast_supported": true,
+                "display_supported": false,
+                "fdr_supported": false,
+                "hdmi_prefer_50hz_supported": false,
+                "hdmi_prefer_high_fps_supported": false,
+                "hi_res_audio_supported": false,
+                "hotspot_supported": true,
+                "input_management_supported": true,
+                "multi_user_supported": true,
+                "multichannel_group_supported": false,
+                "multizone_supported": true,
+                "night_mode_supported": true,
+                "night_mode_supported_v2": true,
+                "opencast_supported": true,
+                "preview_channel_supported": true,
+                "proxy_server_supported": false,
+                "reboot_supported": true,
+                "remote_ducking_supported": true,
+                "setup_supported": true,
+                "show_debug_overlay_supported": false,
+                "stats_supported": true,
+                "system_sound_effects_supported": false,
+                "ui_flipping_supported": false,
+                "user_eq_supported": true,
+                "wifi_regulatory_domain_locked": true,
+                "wifi_supported": true
+            },
+            "cloud_device_id": "00XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXD3",
+            "factory_country_code": "US",
+            "hotspot_bssid": "XX:XX:XX:XX:XX:XX",
+            "mac_address": "XX:XX:XX:XX:XX:X",
+            "manufacturer": "Google Inc.",
+            "model_name": "Google Home",
+            "product_name": "pineapple",
+            "public_key": "xxxxx",
+            "ssdp_udn": "xxxxx",
+            "uma_client_id": "xxxxx",
+            "uptime": 13279.28
+        },
+        "multizone": {
+            "audio_output_delay": 0.0,
+            "audio_output_delay_oem": 0.0,
+            "aux_in_group": "",
+            "groups": [],
+            "multichannel_status": 0
+        },
+        "name": "Living Room speaker",
+        "net": {
+            "ethernet_connected": false,
+            "ip_address": "192.168.XXX.XXX",
+            "online": true
+        },
+        "night_mode_params": {
+            "do_not_disturb": false,
+            "enabled": true,
+            "led_brightness": 0.5,
+            "volume": 0.4,
+            "windows": [
+                {
+                    "days": [0, 1, 2, 3, 4, 5, 6],
+                    "length_hours": 8.0,
+                    "start_hour": 22.0
+                }
+            ]
+        },
+        "opencast": {
+            "pin_code": "4530"
+        },
+        "opt_in": {
+            "audio_hdr": false,
+            "autoplay_on_signal": true,
+            "cloud_ipc": true,
+            "hdmi_prefer_50hz": false,
+            "hdmi_prefer_high_fps": true,
+            "location": false,
+            "opencast": true,
+            "preview_channel": true,
+            "remote_ducking": true,
+            "stats": true,
+            "ui_flipped": false
+        },
+        "proxy": {
+            "mode": "system"
+        },
+        "settings": {
+            "closed_caption": {},
+            "control_notifications": 1,
+            "country_code": "IN",
+            "locale": "en-US",
+            "network_standby": 0,
+            "system_sound_effects": true,
+            "time_format": 1,
+            "timezone": "Asia/Kolkata",
+            "wake_on_cast": 1
+        },
+        "setup": {
+            "setup_state": 60,
+            "ssid_suffix": "k",
+            "stats": {
+                "num_check_connectivity": 0,
+                "num_connect_wifi": 0,
+                "num_connected_wifi_not_saved": 0,
+                "num_initial_eureka_info": 0,
+                "num_obtain_ip": 0
+            },
+            "tos_accepted": true
+        },
+        "user_eq": {
+            "high_shelf": {
+                "frequency": 4500.0,
+                "gain_db": 0.0,
+                "quality": 0.707
+            },
+            "low_shelf": {
+                "frequency": 150.0,
+                "gain_db": 0.0,
+                "quality": 0.707
+            },
+            "max_peaking_eqs": 0,
+            "peaking_eqs": []
+        },
+        "version": 9,
+        "wifi": {
+            "bssid": "xx:xx:xx:xx:xx:xx",
+            "has_changes": false,
+            "noise_level": -92,
+            "signal_level": -42,
+            "ssid": "Wifi name",
+            "wpa_configured": true,
+            "wpa_id": 1,
+            "wpa_state": 10
+        }
+    }
+    ```
+
+
+## Check Ready Status [/setup/assistant/check_ready_status]
+Setting `play_ready_message` to true plays a welcome message on the device saying "Hi, I'm your Google Assistant. I'm here to help. To learn a few things you can do, continue in the Google Home app."
+### Check Ready Status [POST]
+
++ Request (application/json)
+    
+    ```
+    {
+        "play_ready_message": false
+    }
+    ```
+
++ Response 200 (application/json)
+    
+    ```
+    {
+        "can_enroll": true,
+        "enrollment_state": 0,
+        "error_code": 0,
+        "ready": true
+    }
+    ```
+
++ Request (application/json)
+
+    ```
+    {
+        "play_ready_message": false,
+        "user_id": "xxxxx"
+    }
+    ```
+  
++ Response 200 (application/json)
+
+    ```
+    {
+        "can_enroll": true,
+        "enrollment_state": 0,
+        "error": "NOT_LINKED",
+        "error_code": 0,
+        "ready": false,
+        "retryable": false
+    }
+    ```
+
+
+## Get supported timezones [/setup/supported_timezones]
+Get a list of supported timezones. Used while setting Night Mode.
+### Get supported timezones [GET]
+
++ Response 200 (application/json)
+
+    ```
+    [
+        {
+            "display_string": "Samoa Standard Time (Midway)",
+            "offset": -660,
+            "timezone": "Pacific/Midway"
+        }, {
+            "display_string": "Hawaii-Aleutian Standard Time (Honolulu)",
+            "offset": -600,
+            "timezone": "Pacific/Honolulu"
+        }, {
+            "display_string": "Alaska Standard Time (Anchorage)",
+            "offset": -540,
+            "timezone": "America/Anchorage"
+        },
+        ...
+    ]
+    ```
+
+
+## Get supported locales [/setup/supported_locales]
+Get a list of supported locales. Used while setting Night Mode.
+### Get supported locales [GET]
+
++ Response 200 (application/json)
+
+    ```
+    [
+        {
+            "display_string": "English (United States)",
+            "locale": "en-US"
+        }, {
+        {
+            "display_string": "German - Deutsch",
+            "locale": "de"
+        }, {
+        {
+            "display_string": "English (United Kingdom)",
+            "locale": "en-GB"
+        },
+        ...
+    ]
+    ```
+
+
+
+
+# Group Device Settings
+Change various device settings
+
+
+## Set device options [/setup/set_eureka_info]
+**Note:** Any combination of fields can be used.
+### Set device options [POST]
+
++ Request (application/json)
+    
+    ```
+    {
+        "name": "Living Room",
+        "settings": {
+            "control_notifications": 2
+        },
+        "opt_in": {
+            "opencast": false,
+            "preview_channel": false,
+            "remote_ducking": false,
+            "stats": false
+        }
+    }
+    ```
+
++ Response 200
+
+
+## Set night mode settings [/setup/assistant/set_night_mode_params]
+Set night mode settings.  
+**Note:** Any combination of fields can be used.
+
+**Control normal volume with night mode**  
+Since normal volume can be controlled for night mode, if night mode is active throughout the day, it might be possible to use it as a workaround for controlling normal volume. [_Testing needed_]
+### Set night mode settings [POST]
+
++ Request (application/json)
+
+    ```
+    {
+        "enabled": false,
+        "do_not_disturb": true,
+        "led_brightness": 0.44999998807907104,
+        "volume":0.46000000834465027,
+        "demo_to_user": true,
+        "windows": [
+            {
+                "length_hours": 8,
+                "days": [0,1,2,3,4,5,6],
+                "start_hour": 22
+            }
+        ]
+    }
+    ```
+
++ Response 200
+
+
+## Reboot device [/setup/reboot]
+Reboot the device.
+### Reboot the device [POST]
+
++ Request (application/json)
+    
+    ```
+    { "params": "now" }
+    ```
+
++ Response 200
+
+
+## Factory reset device [/setup/reboot]
+Factory reset the device.
+### Factory reset device [POST]
+
++ Request (application/json)
+    
+    ```
+    { "params": "fdr" }
+    ```
+
++ Response 200
