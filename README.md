@@ -1,4 +1,5 @@
 # [Google Home Local API Documentation](https://rithvikvibhu.github.io/GHLocalApi/)
+**NOTE:** The new Apiary docs (https://ghlocalapi.docs.apiary.io) will be replacing the one hosted on GitHub.  
 Available here: https://rithvikvibhu.github.io/GHLocalApi/
 
 [![Build Status](https://travis-ci.org/rithvikvibhu/GHLocalApi.svg?branch=master)](https://travis-ci.org/rithvikvibhu/GHLocalApi)
