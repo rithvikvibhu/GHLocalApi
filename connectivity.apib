@@ -33,7 +33,7 @@ Connect to a new wifi network.
         ”wpa_cipher”: 4,
         ”enc_passwd”: ”xxxxxfPY=”
       }
-  
+
   + Response 200
 
 
@@ -43,7 +43,7 @@ Forget a wifi network. Get `wpa_id` using `/setup/eureka_info`.
 
   + Request (application/json)
       { "wpa_id": 1 }
-  
+
   + Response 200
 
 
@@ -94,7 +94,12 @@ Temporarily turn on bluetooth discoveribility. Used to connect new devices.
   + Response 200
 
 
-## Connect bluetooth device [/setup/bluetooth/connect]
-Connect a new bluetooth device.
-### Connect bluetooth device [POST]
-Not tested
+## Connect / Disconnect bluetooth device [/setup/bluetooth/connect]
+Connect or disconnect an existing bluetooth device. To disconnect, send `false` instead of `true`.
+**Note:** This is not the same as pairing and forgetting a device.
+### Connect / Disconnect bluetooth device [POST]
+
+  + Request (application/json)
+      { "connect": true }
+
+  + Response 200
