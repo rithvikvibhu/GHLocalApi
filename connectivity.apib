@@ -20,6 +20,34 @@ Get a list of all saved WiFi networks (no passwords obviously)
       ]
 
 
+## Scan for Wifi networks [/setup/scan_wifi]
+**Note:** To get the results, make another request to /setup/scan_results
+### Scan for Wifi networks [POST]
+
+  + Request
+
+  + Response 200
+
+
+## Get Wifi scan results [/setup/scan_results]
+### Get Wifi scan results [GET]
+
+  + Request
+
+  + Response 200 (application/json)
+      [
+        {
+          "bssid": "APBSSID1",
+          "signal_level": -20,
+          "ssid": "APSSID1",
+          "wpa_auth": 7,
+          "wpa_cipher": 4,
+          "wpa_id": 0
+        },
+        ...
+      ]
+
+
 ## Connect to Wifi [/setup/connect_wifi]
 Connect to a new wifi network.
 ### Connect to Wifi [POST]
