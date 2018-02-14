@@ -29,14 +29,18 @@ Gets a token which can presumably be used to get offers online. Not used anywher
       }
 
 
-## Get device info [/setup/eureka_info?options=detail&params=]
+## Get device info [/setup/eureka_info?{options}=detail&{params}=]
 Get information about device and some states.
 **Note:**
-params: Comma separated combination of these values: `version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
+params: Comma separated combination of these values: `version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`
 ### Get device info [GET]
 
+  + Parameters
+      + params
+      + options
+
   + Request
-    ?params=version,name,build_info,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
+    ?params=version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail
 
   + Response 200 (application/json)
       {
@@ -47,6 +51,25 @@ params: Comma separated combination of these values: `version,name,build_info,de
           "preview_channel_state": 4,
           "release_track": "preview-joining-stable-channel",
           "system_build_number": "106111"
+        },
+        "audio": {
+          "digital": false
+        },
+        "detail": {
+          "icon_list": [{
+            "depth": 32,
+            "height": 55,
+            "mimetype": "image/png",
+            "url": "/setup/icon.png",
+            "width": 98
+          }],
+          "locale": {
+            "display_string": "English (United States)"
+          },
+          "timezone": {
+            "display_string": "India Standard Time (Kolkata)",
+            "offset": 330
+          }
         },
         "device_info": {
         "4k_blocked": 0,
@@ -192,9 +215,44 @@ params: Comma separated combination of these values: `version,name,build_info,de
       }
 
 
+## Check Ready Status [/setup/assistant/check_ready_status]
+Setting `play_ready_message` to true plays a welcome message on the device saying "Hi, I'm your Google Assistant. I'm here to help. To learn a few things you can do, continue in the Google Home app."
+### Check Ready Status [POST]
+
+  + Request (application/json)
+      {
+        "play_ready_message": false
+      }
+
+  + Response 200 (application/json)
+      {
+        "can_enroll": true,
+        "enrollment_state": 0,
+        "error_code": 0,
+        "ready": true
+      }
+
+  + Request (application/json)
+      {
+        "play_ready_message": false,
+        "user_id": "xxxxx"
+      }
+  
+  + Response 200 (application/json)
+      {
+        "can_enroll": true,
+        "enrollment_state": 0,
+        "error": "NOT_LINKED",
+        "error_code": 0,
+        "ready": false,
+        "retryable": false
+      }
+
+
 ## Get supported timezones [/setup/supported_timezones]
 Get a list of supported timezones. Used while setting Night Mode.
 ### Get supported timezones [GET]
+
   + Request
 
   + Response 200 (application/json)
@@ -219,6 +277,7 @@ Get a list of supported timezones. Used while setting Night Mode.
 ## Get supported locales [/setup/supported_locales]
 Get a list of supported locales. Used while setting Night Mode.
 ### Get supported locales [GET]
+
   + Request
 
   + Response 200 (application/json)

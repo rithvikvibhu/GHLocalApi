@@ -20,10 +20,59 @@ Get a list of all saved WiFi networks (no passwords obviously)
       ]
 
 
+## Scan for Wifi networks [/setup/scan_wifi]
+**Note:** To get the results, make another request to /setup/scan_results
+### Scan for Wifi networks [POST]
+
+  + Request
+
+  + Response 200
+
+
+## Get Wifi scan results [/setup/scan_results]
+### Get Wifi scan results [GET]
+
+  + Request
+
+  + Response 200 (application/json)
+      [
+        {
+          "bssid": "APBSSID1",
+          "signal_level": -20,
+          "ssid": "APSSID1",
+          "wpa_auth": 7,
+          "wpa_cipher": 4,
+          "wpa_id": 0
+        },
+        ...
+      ]
+
+
 ## Connect to Wifi [/setup/connect_wifi]
 Connect to a new wifi network.
-### Connect to Wifi [GET]
-Not tested
+### Connect to Wifi [POST]
+
+  + Request
+      {
+        “bssid”: ”5c:0a:xx:xx:xx:xx”,
+        ”signal_level”: -42,
+        ”ssid”: ”myotherssid”,
+        ”wpa_auth”: 7,
+        ”wpa_cipher”: 4,
+        ”enc_passwd”: ”xxxxxfPY=”
+      }
+
+  + Response 200
+
+
+## Forget Wifi network [/setup/forget_wifi]
+Forget a wifi network. Get `wpa_id` using `/setup/eureka_info`.
+### Forget Wifi network [POST]
+
+  + Request (application/json)
+      { "wpa_id": 1 }
+
+  + Response 200
 
 
 ## Get bluetooth bonded devices [/setup/bluetooth/get_bonded]
@@ -39,7 +88,7 @@ Get a list of all paired bluetooth devices.
           "device_class": 5898764,
           "device_type": 1,
           "last_connect_date": 1514807829482.111,
-          "mac_address": "xx: xx: xx: xx: xx: xx",
+          "mac_address": "xx:xx:xx:xx:xx:xx",
           "name": "Device Name",
           "rssi": -255,
           "service_uuids": [
@@ -51,6 +100,18 @@ Get a list of all paired bluetooth devices.
       ]
 
 
+## Forget bluetooth bonded device [/setup/bluetooth/bond]
+Forget a paired bluetooth device.
+### Forget bluetooth bonded device [POST]
+
+  + Request (application/json)
+      {
+        "mac_address": "xx:xx:xx:xx:xx:xx",
+        "bond": false
+      }
+
+  + Response 200
+
 ## Set bluetooth discoverable [/setup/bluetooth/discovery]
 Temporarily turn on bluetooth discoveribility. Used to connect new devices.
 ### Set bluetooth discoverable [POST]
@@ -61,7 +122,19 @@ Temporarily turn on bluetooth discoveribility. Used to connect new devices.
   + Response 200
 
 
+<<<<<<< HEAD
 ## Connect bluetooth device [/setup/bluetooth/connect]
 Connect a new bluetooth device.
 ### Connect bluetooth device [POST]
 Not tested
+=======
+## Connect / Disconnect bluetooth device [/setup/bluetooth/connect]
+Connect or disconnect an existing bluetooth device. To disconnect, send `false` instead of `true`.
+**Note:** This is not the same as pairing and forgetting a device.
+### Connect / Disconnect bluetooth device [POST]
+
+  + Request (application/json)
+      { "connect": true }
+
+  + Response 200
+>>>>>>> rithvikvibhu/master
