@@ -49,6 +49,35 @@ Since normal volume can be controlled for night mode, if night mode is active th
 
   + Response 200
 
+## Join group [/setup/multizone/leave_group]
+Join a multizone group.
+**Note:**
+uuid can be found at /setup/eureka_info?params=multizone
+### Join group [POST]
+Not tested
+
+## Leave group [/setup/multizone/leave_group]
+Leave a multizone group.
+**Note:**
+uuid can be found at /setup/eureka_info?params=multizone
+### Leave group [POST]
+
+  + Request (application/json)
+      { "uuid": "< MULTIZONE GROUP UUID >" }
+
+  + Response 200
+
+## Disband group [/setup/multizone/leave_group]
+Disband (delete) a multizone group.
+**Note:**
+uuid can be found at /setup/eureka_info?params=multizone
+### Disband group [POST]
+
+  + Request (application/json)
+      { "uuid": "< MULTIZONE GROUP UUID >" }
+
+  + Response 200
+
 
 ## Reboot device [/setup/reboot]
 Reboot the device.
