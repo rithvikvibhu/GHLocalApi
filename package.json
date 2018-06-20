@@ -1,9 +1,28 @@
 {
-    "scripts": {
-        "dist": "node ./apib2html.js"
-    },
-    "dependencies": {
-        "aglio": "^2.3.0",
-        "fs-extra": "^5.0.0"
-    }
+  "name": "ghlocalapi",
+  "description": "Documentation for Google Home's local API",
+  "version": "1.0.0",
+  "main": "apib2html.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rithvikvibhu/GHLocalApi.git"
+  },
+  "keywords": [
+    "google-home",
+    "api-blueprint",
+    "aglio"
+  ],
+  "author": "Rithvik Vibhu <rithvikvibhu@gmail.com> (https://keybase.io/rithvikvibhu)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rithvikvibhu/GHLocalApi/issues"
+  },
+  "homepage": "https://github.com/rithvikvibhu/GHLocalApi#readme",
+  "scripts": {
+    "dist": "node ./apib2html.js"
+  },
+  "dependencies": {
+    "aglio": "^2.3.0",
+    "fs-extra": "^6.0.1"
+  }
 }
