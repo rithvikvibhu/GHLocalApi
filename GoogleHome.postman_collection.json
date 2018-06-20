@@ -1,0 +1,2465 @@
+{
+	"info": {
+		"_postman_id": "5c1b3760-cb80-4bb5-8c20-b5e83d80122c",
+		"name": "Google Home",
+		"description": "This is an unofficial documentation of the local API used by the Home app to communicate with the device.\n\n## Getting Started\n\nThe port for the http server is `8008` so the base url for these endpoints is:  \n`http://<google-home-ip>:8008`  \nGet the IP of Google Home from the Google Home app (Device Settings -> End of list) or from your router.\n\nThere is no auth mechanism in place as of now.\n\nGET requests are simple, in the browser kind.  \nPOST requests need to set the header: `content-type: application/json`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Device Info",
+			"description": "Endpoints in this folder give information about the device.",
+			"item": [
+				{
+					"name": "Eureka Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/eureka_info?params=version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"eureka_info"
+							],
+							"query": [
+								{
+									"key": "params",
+									"value": "version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer"
+								},
+								{
+									"key": "options",
+									"value": "detail"
+								}
+							]
+						},
+						"description": "This gives most of the device info. The GET parameter `param` is a comma separated list of json keys to fetch. Currently, these params are known: `version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer`\n\nNested items can also be filtered using the dot notation. Example: `audio.digital`\n\nThe `options` GET parameter is always set to `detail`. No other value is known."
+					},
+					"response": [
+						{
+							"id": "1b1862da-2c82-4604-88a9-e777a6f3a227",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/eureka_info?params=version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer&options=detail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"eureka_info"
+									],
+									"query": [
+										{
+											"key": "params",
+											"value": "version,audio,name,build_info,detail,device_info,net,wifi,setup,settings,opt_in,opencast,multizone,proxy,night_mode_params,user_eq,room_equalizer"
+										},
+										{
+											"key": "options",
+											"value": "detail"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3707",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"audio\": {\n        \"digital\": false\n    },\n    \"build_info\": {\n        \"build_type\": 2,\n        \"cast_build_revision\": \"1.32.118652\",\n        \"cast_control_version\": 1,\n        \"preview_channel_state\": 4,\n        \"release_track\": \"preview-joining-stable-channel\",\n        \"system_build_number\": \"118652\"\n    },\n    \"detail\": {\n        \"icon_list\": [\n            {\n                \"depth\": 32,\n                \"height\": 55,\n                \"mimetype\": \"image/png\",\n                \"url\": \"/setup/icon.png\",\n                \"width\": 98\n            }\n        ],\n        \"locale\": {\n            \"display_string\": \"English (United States)\"\n        },\n        \"timezone\": {\n            \"display_string\": \"India Standard Time (Kolkata)\",\n            \"offset\": 330\n        }\n    },\n    \"device_info\": {\n        \"4k_blocked\": 0,\n        \"capabilities\": {\n            \"assistant_supported\": true,\n            \"audio_hdr_supported\": false,\n            \"audio_surround_mode_supported\": false,\n            \"ble_supported\": true,\n            \"bluetooth_audio_sink_supported\": true,\n            \"bluetooth_audio_source_supported\": true,\n            \"bluetooth_supported\": true,\n            \"cloudcast_supported\": true,\n            \"display_supported\": false,\n            \"fdr_supported\": false,\n            \"hdmi_prefer_50hz_supported\": false,\n            \"hdmi_prefer_high_fps_supported\": false,\n            \"hi_res_audio_supported\": false,\n            \"hotspot_supported\": true,\n            \"input_management_supported\": true,\n            \"multi_user_supported\": true,\n            \"multichannel_group_supported\": false,\n            \"multizone_supported\": true,\n            \"night_mode_supported\": true,\n            \"night_mode_supported_v2\": true,\n            \"opencast_supported\": true,\n            \"preview_channel_supported\": true,\n            \"proxy_server_supported\": false,\n            \"reboot_supported\": true,\n            \"remote_ducking_supported\": true,\n            \"setup_supported\": true,\n            \"show_debug_overlay_supported\": false,\n            \"stats_supported\": true,\n            \"system_sound_effects_supported\": false,\n            \"ui_flipping_supported\": false,\n            \"user_eq_supported\": true,\n            \"wifi_regulatory_domain_locked\": true,\n            \"wifi_supported\": true\n        },\n        \"cloud_device_id\": \"XXXXX\",\n        \"factory_country_code\": \"US\",\n        \"hotspot_bssid\": \"XX:XX:XX:XX:XX:XX\",\n        \"mac_address\": \"XX:XX:XX:XX:XX:XX\",\n        \"manufacturer\": \"Google Inc.\",\n        \"model_name\": \"Google Home\",\n        \"product_name\": \"pineapple\",\n        \"public_key\": \"XXXXX\",\n        \"ssdp_udn\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        \"uma_client_id\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        \"uptime\": 4332.29\n    },\n    \"multizone\": {\n        \"audio_output_delay\": 0,\n        \"audio_output_delay_oem\": 0,\n        \"aux_in_group\": \"\",\n        \"groups\": [],\n        \"multichannel_status\": 0\n    },\n    \"name\": \"Living Room\",\n    \"net\": {\n        \"ethernet_connected\": false,\n        \"ip_address\": \"192.168.X.X\",\n        \"online\": true\n    },\n    \"night_mode_params\": {\n        \"do_not_disturb\": true,\n        \"enabled\": false,\n        \"led_brightness\": 0.44999998807907104,\n        \"volume\": 0.46000000834465027,\n        \"windows\": [\n            {\n                \"days\": [\n                    0,\n                    1,\n                    2,\n                    3,\n                    4,\n                    5,\n                    6\n                ],\n                \"length_hours\": 8,\n                \"start_hour\": 22\n            }\n        ]\n    },\n    \"opencast\": {\n        \"pin_code\": \"4602\"\n    },\n    \"opt_in\": {\n        \"audio_hdr\": false,\n        \"audio_surround_mode\": 0,\n        \"autoplay_on_signal\": true,\n        \"cloud_ipc\": true,\n        \"hdmi_prefer_50hz\": false,\n        \"hdmi_prefer_high_fps\": true,\n        \"opencast\": true,\n        \"preview_channel\": true,\n        \"remote_ducking\": true,\n        \"stats\": true,\n        \"ui_flipped\": false\n    },\n    \"proxy\": {\n        \"mode\": \"system\"\n    },\n    \"settings\": {\n        \"closed_caption\": {},\n        \"control_notifications\": 2,\n        \"country_code\": \"IN\",\n        \"locale\": \"en-US\",\n        \"network_standby\": 0,\n        \"system_sound_effects\": true,\n        \"time_format\": 1,\n        \"timezone\": \"Asia/Kolkata\",\n        \"wake_on_cast\": 1\n    },\n    \"setup\": {\n        \"setup_state\": 60,\n        \"ssid_suffix\": \"k\",\n        \"stats\": {\n            \"num_check_connectivity\": 0,\n            \"num_connect_wifi\": 0,\n            \"num_connected_wifi_not_saved\": 0,\n            \"num_initial_eureka_info\": 0,\n            \"num_obtain_ip\": 0\n        },\n        \"tos_accepted\": true\n    },\n    \"user_eq\": {\n        \"high_shelf\": {\n            \"frequency\": 4500,\n            \"gain_db\": 0,\n            \"quality\": 0.707\n        },\n        \"low_shelf\": {\n            \"frequency\": 150,\n            \"gain_db\": 0,\n            \"quality\": 0.707\n        },\n        \"max_peaking_eqs\": 0,\n        \"peaking_eqs\": []\n    },\n    \"version\": 9,\n    \"wifi\": {\n        \"bssid\": \"XX:XX:XX:XX:XX:XX\",\n        \"has_changes\": false,\n        \"noise_level\": -92,\n        \"signal_level\": -52,\n        \"ssid\": \"XXXXX\",\n        \"wpa_configured\": true,\n        \"wpa_id\": 1,\n        \"wpa_state\": 10\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "App Device ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"app_id\": \"E8C28D3C\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/get_app_device_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"get_app_device_id"
+							]
+						},
+						"description": "This gives \"app device id\", \"certificate\" and \"signed data\".  \nThe `app_id` in the request is mandatory and refers to Chromecast backdrop/screensaver app. It has to be set to `E8C28D3C`.  \n\nThe certificate is valid and issued by `Chromecast ICA 6 (Audio Assist), Google Inc`.  \nNot sure what the other two are."
+					},
+					"response": [
+						{
+							"id": "276b8741-f1d9-479b-bd18-1e621a9ed8d9",
+							"name": "Invalid App ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"app_id\": \"XXXXXXXX\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/get_app_device_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"get_app_device_id"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "13d2beb4-0104-4534-a3f9-992201732568",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"app_id\": \"E8C28D3C\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/get_app_device_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"get_app_device_id"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1828",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"app_device_id\": \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n    \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDyzCCArOgAwIBAgIEWAVEujANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC\\nVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDU1vdW50YWluIFZpZXcx\\nEzARBgNVBAoMCkdvb2dsZSBJbmMxDTALBgNVBAsMBENhc3QxKDAmBgNVBAMMH0No\\ncm9tZWNhc3QgSUNBIDYgKEF1ZGlvIEFzc2lzdCkwHhcNMTYxMDE3MjEzODAyWhcN\\nMzYxMDEyMjEzODAyWjB8MRMwEQYDVQQIDApDYWxpZm9ybmlhMQswCQYDVQQGEwJV\\nUzEWMBQGA1UEBwwNTW91bnRhaW4gVmlldzENMAsGA1UECwwEQ2FzdDETMBEGA1UE\\nCgwKR29vZ2xlIEluYzEcMBoGA1UEAwwTQVkwTTdOIEZBOEZDQTMwNDE3MTCCASIw\\nDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJrs4oARV4dn68gam78NWTscGx+x\\np6hm23DQWdazzkoRdUdmb/BnCNPWCM1sw6eVKoc+wfiNtE2RSXO72+WBS11LAf3u\\n/7SIpuTs63oQCZoijAbJ58sF6VLgItt1NrtLOGyE2zyCowWnVXgS0KJbZn6Gy3fn\\nc6qWNW7RVl99vuUctjKVep0iRpXk2f/7gNjZZVSssg/BfN55NFaYvArmppJJu4RZ\\nR7sEu+Jd+zO9a93Re8wDGEHnLAvw5TuVwkRrm2+rLWOzej+6TBuF8pXKfttwGb47\\n/6JDD28rwEH1aT263BZolPTf6GqPyjKqiK42pOE6GU4iwKllC+y2irHhwLkCAwEA\\nAaNIMEYwCQYDVR0TBAIwADALBgNVHQ8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUH\\nAwIwFwYDVR0gBBAwDjAMBgorBgEEAdZ5AgUCMA0GCSqGSIb3DQEBBQUAA4IBAQCu\\nOkrf/PVBaDPWR+YeiE/3UauwMXCN4VakJ7OYG3hy1r6AhA62H3ITdM2cXCV7T9NL\\nDSL02DphIsbU1Us9uUU3v7tiWy5A1VT23EPqsJYFk146VySDvqg7xx6xkpHs7r59\\ntn2tffpxUjSeUep1VQpcQpgcVT2JZHt4LwNtbbXyu3U98bz/dT78QIFYtu5WTqRA\\nyOaw+0nAI6hrEbPnoJ/8rtb1WCmB4zmvoLiamwajwMaEzQrF9oc04LCHSHgRmFqy\\nGopFA2pW8eHR8RYzds3HRExxx4E8HozV8V2EoQC9hmfE48Teky4SXzCWf9arFNXq\\nqwp7/thZVuJIg+BZOeb0\\n-----END CERTIFICATE-----\\n\",\n    \"signed_data\": \"HAjp4Jqm6vKiIsQxAIF6jHmVSomqW4gC5W67OY1NzhPnmCQW2pjF2hWnaeTXwkd3DlI4tu+VsLR8q9pfEAV1KAJseku43f3iT6mg7etJ5HMym6y97ri4LB2tva1dxfK3YhIPVyGdEc4s2O+eTrI6kmY1nXxXLKuTeF8Hg+Akp2eOREljj+KNwVa+LA5EWtcA3Lq09qAfBcWj0fu+A1Gxi1YZNvDfjcrz3SF32hzXHl24xADxvbnlJ6O0atQNqvybB5ENaaqOoSoRct9JhuVRT8EkJd3MWm3gwADEA3hP11Oo8m3GIuBhcF3VBt946035kg9rf+9GLF+fme2sJQBGuA==\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Offer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/offer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"offer"
+							]
+						},
+						"description": "This gives a token which is used by the Home app to get offers. The offers themselves are not stored on the device.  \nA new token is generated for every request."
+					},
+					"response": [
+						{
+							"id": "f771f357-91e1-4541-9514-224542e686e3",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/offer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"offer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"token\":\"ADtqmfShz74YuyEyF8hNAP8uLTEKGZjp-qnKOAzuXYcYWw5H9dqtUBOYxN_gOyvR9ibEefxiM0EZaiBWhwvPkBg1jnLNdCycWuCv9bKdn-6zUa06a6sah55gvtA8VkiDObuc8RKmvB2tq3UCAM9u_7xnZNHFswfbW99Lh1-qAp-NB0xZIu-un3JKZ0EfMQywHMs9fNY_QjcDgaLyqaqAsAE1GwZZ_IEtmw==\"}"
+						}
+					]
+				},
+				{
+					"name": "Check Ready Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"play_ready_message\": true,\r\n  \"user_id\": \"xxxxx\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/check_ready_status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"check_ready_status"
+							]
+						},
+						"description": "**Update:** This seems to have changed now and is no longer possible. The error is also new.\n\nSetting `play_ready_message` to true plays a welcome message on the device saying \"Hi, I'm your Google Assistant. I'm here to help. To learn a few things you can do, continue in the Google Home app.\""
+					},
+					"response": [
+						{
+							"id": "c3a292ff-09ab-4c8f-9c5e-0881cba6e3cb",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"play_ready_message\": true,\r\n  \"user_id\": \"xxxxx\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/check_ready_status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"check_ready_status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"can_enroll\":false,\"enrollment_state\":8,\"error\":\"NEED_RELINK\",\"error_code\":7,\"ready\":false,\"retryable\":false}"
+						}
+					]
+				},
+				{
+					"name": "Timezones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/supported_timezones",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"supported_timezones"
+							]
+						},
+						"description": "Simply returns a list of all supported timezones."
+					},
+					"response": [
+						{
+							"id": "5f6efb27-45e3-4e6a-b3b5-731971743c0d",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/supported_timezones",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"supported_timezones"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11722",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"display_string\":\"Samoa Standard Time (Midway)\",\"offset\":-660,\"timezone\":\"Pacific/Midway\"},{\"display_string\":\"Hawaii-Aleutian Standard Time (Honolulu)\",\"offset\":-600,\"timezone\":\"Pacific/Honolulu\"},{\"display_string\":\"Alaska Daylight Time (Anchorage)\",\"offset\":-480,\"timezone\":\"America/Anchorage\"},{\"display_string\":\"Pacific Daylight Time (Los Angeles)\",\"offset\":-420,\"timezone\":\"America/Los_Angeles\"},{\"display_string\":\"Pacific Daylight Time (Vancouver)\",\"offset\":-420,\"timezone\":\"America/Vancouver\"},{\"display_string\":\"Pacific Daylight Time (Tijuana)\",\"offset\":-420,\"timezone\":\"America/Tijuana\"},{\"display_string\":\"Mountain Standard Time (Phoenix)\",\"offset\":-420,\"timezone\":\"America/Phoenix\"},{\"display_string\":\"Mountain Daylight Time (Denver)\",\"offset\":-360,\"timezone\":\"America/Denver\"},{\"display_string\":\"Mountain Daylight Time (Edmonton)\",\"offset\":-360,\"timezone\":\"America/Edmonton\"},{\"display_string\":\"Mexican Pacific Daylight Time (Chihuahua)\",\"offset\":-360,\"timezone\":\"America/Chihuahua\"},{\"display_string\":\"Central Standard Time (Regina)\",\"offset\":-360,\"timezone\":\"America/Regina\"},{\"display_string\":\"Central Standard Time (Costa Rica)\",\"offset\":-360,\"timezone\":\"America/Costa_Rica\"},{\"display_string\":\"Central Daylight Time (Chicago)\",\"offset\":-300,\"timezone\":\"America/Chicago\"},{\"display_string\":\"Central Daylight Time (Mexico City)\",\"offset\":-300,\"timezone\":\"America/Mexico_City\"},{\"display_string\":\"Central Daylight Time (Winnipeg)\",\"offset\":-300,\"timezone\":\"America/Winnipeg\"},{\"display_string\":\"Colombia Standard Time (Bogota)\",\"offset\":-300,\"timezone\":\"America/Bogota\"},{\"display_string\":\"Eastern Daylight Time (New York)\",\"offset\":-240,\"timezone\":\"America/New_York\"},{\"display_string\":\"Eastern Daylight Time (Toronto)\",\"offset\":-240,\"timezone\":\"America/Toronto\"},{\"display_string\":\"Venezuela Time (Caracas)\",\"offset\":-240,\"timezone\":\"America/Caracas\"},{\"display_string\":\"Atlantic Standard Time (Barbados)\",\"offset\":-240,\"timezone\":\"America/Barbados\"},{\"display_string\":\"Atlantic Daylight Time (Halifax)\",\"offset\":-180,\"timezone\":\"America/Halifax\"},{\"display_string\":\"Amazon Standard Time (Manaus)\",\"offset\":-240,\"timezone\":\"America/Manaus\"},{\"display_string\":\"Chile Standard Time (Santiago)\",\"offset\":-240,\"timezone\":\"America/Santiago\"},{\"display_string\":\"Newfoundland Daylight Time (St Johns)\",\"offset\":-150,\"timezone\":\"America/St_Johns\"},{\"display_string\":\"Brasilia Standard Time (Sao Paulo)\",\"offset\":-180,\"timezone\":\"America/Sao_Paulo\"},{\"display_string\":\"Brasilia Standard Time (Araguaina)\",\"offset\":-180,\"timezone\":\"America/Araguaina\"},{\"display_string\":\"Argentina Standard Time (Buenos Aires)\",\"offset\":-180,\"timezone\":\"America/Argentina/Buenos_Aires\"},{\"display_string\":\"Western Argentina Standard Time (San Luis)\",\"offset\":-180,\"timezone\":\"America/Argentina/San_Luis\"},{\"display_string\":\"Uruguay Standard Time (Montevideo)\",\"offset\":-180,\"timezone\":\"America/Montevideo\"},{\"display_string\":\"West Greenland Summer Time (Godthab)\",\"offset\":-120,\"timezone\":\"America/Godthab\"},{\"display_string\":\"South Georgia Time (South Georgia)\",\"offset\":-120,\"timezone\":\"Atlantic/South_Georgia\"},{\"display_string\":\"Cape Verde Standard Time (Cape Verde)\",\"offset\":-60,\"timezone\":\"Atlantic/Cape_Verde\"},{\"display_string\":\"Azores Summer Time (Azores)\",\"offset\":0,\"timezone\":\"Atlantic/Azores\"},{\"display_string\":\"Western European Standard Time (Casablanca)\",\"offset\":0,\"timezone\":\"Africa/Casablanca\"},{\"display_string\":\"British Summer Time (London)\",\"offset\":60,\"timezone\":\"Europe/London\"},{\"display_string\":\"Irish Standard Time (Dublin)\",\"offset\":60,\"timezone\":\"Europe/Dublin\"},{\"display_string\":\"Central European Summer Time (Amsterdam)\",\"offset\":120,\"timezone\":\"Europe/Amsterdam\"},{\"display_string\":\"Central European Summer Time (Belgrade)\",\"offset\":120,\"timezone\":\"Europe/Belgrade\"},{\"display_string\":\"Central European Summer Time (Berlin)\",\"offset\":120,\"timezone\":\"Europe/Berlin\"},{\"display_string\":\"Central European Summer Time (Brussels)\",\"offset\":120,\"timezone\":\"Europe/Brussels\"},{\"display_string\":\"Central European Summer Time (Copenhagen)\",\"offset\":120,\"timezone\":\"Europe/Copenhagen\"},{\"display_string\":\"Western European Summer Time (Lisbon)\",\"offset\":60,\"timezone\":\"Europe/Lisbon\"},{\"display_string\":\"Central European Summer Time (Madrid)\",\"offset\":120,\"timezone\":\"Europe/Madrid\"},{\"display_string\":\"Central European Summer Time (Oslo)\",\"offset\":120,\"timezone\":\"Europe/Oslo\"},{\"display_string\":\"Central European Summer Time (Paris)\",\"offset\":120,\"timezone\":\"Europe/Paris\"},{\"display_string\":\"Central European Summer Time (Rome)\",\"offset\":120,\"timezone\":\"Europe/Rome\"},{\"display_string\":\"Central European Summer Time (Stockholm)\",\"offset\":120,\"timezone\":\"Europe/Stockholm\"},{\"display_string\":\"Central European Summer Time (Sarajevo)\",\"offset\":120,\"timezone\":\"Europe/Sarajevo\"},{\"display_string\":\"Central European Summer Time (Vienna)\",\"offset\":120,\"timezone\":\"Europe/Vienna\"},{\"display_string\":\"Central European Summer Time (Warsaw)\",\"offset\":120,\"timezone\":\"Europe/Warsaw\"},{\"display_string\":\"Central European Summer Time (Zurich)\",\"offset\":120,\"timezone\":\"Europe/Zurich\"},{\"display_string\":\"Central Africa Time (Windhoek)\",\"offset\":120,\"timezone\":\"Africa/Windhoek\"},{\"display_string\":\"West Africa Standard Time (Lagos)\",\"offset\":60,\"timezone\":\"Africa/Lagos\"},{\"display_string\":\"West Africa Standard Time (Brazzaville)\",\"offset\":60,\"timezone\":\"Africa/Brazzaville\"},{\"display_string\":\"Eastern European Standard Time (Cairo)\",\"offset\":120,\"timezone\":\"Africa/Cairo\"},{\"display_string\":\"Central Africa Time (Harare)\",\"offset\":120,\"timezone\":\"Africa/Harare\"},{\"display_string\":\"Central Africa Time (Maputo)\",\"offset\":120,\"timezone\":\"Africa/Maputo\"},{\"display_string\":\"South Africa Standard Time (Johannesburg)\",\"offset\":120,\"timezone\":\"Africa/Johannesburg\"},{\"display_string\":\"Eastern European Summer Time (Helsinki)\",\"offset\":180,\"timezone\":\"Europe/Helsinki\"},{\"display_string\":\"Eastern European Summer Time (Athens)\",\"offset\":180,\"timezone\":\"Europe/Athens\"},{\"display_string\":\"Eastern European Summer Time (Amman)\",\"offset\":180,\"timezone\":\"Asia/Amman\"},{\"display_string\":\"Eastern European Summer Time (Beirut)\",\"offset\":180,\"timezone\":\"Asia/Beirut\"},{\"display_string\":\"Israel Daylight Time (Jerusalem)\",\"offset\":180,\"timezone\":\"Asia/Jerusalem\"},{\"display_string\":\"Moscow Standard Time (Minsk)\",\"offset\":180,\"timezone\":\"Europe/Minsk\"},{\"display_string\":\"Arabian Standard Time (Baghdad)\",\"offset\":180,\"timezone\":\"Asia/Baghdad\"},{\"display_string\":\"Arabian Standard Time (Riyadh)\",\"offset\":180,\"timezone\":\"Asia/Riyadh\"},{\"display_string\":\"Arabian Standard Time (Kuwait)\",\"offset\":180,\"timezone\":\"Asia/Kuwait\"},{\"display_string\":\"East Africa Time (Nairobi)\",\"offset\":180,\"timezone\":\"Africa/Nairobi\"},{\"display_string\":\"Iran Daylight Time (Tehran)\",\"offset\":270,\"timezone\":\"Asia/Tehran\"},{\"display_string\":\"Moscow Standard Time (Moscow)\",\"offset\":180,\"timezone\":\"Europe/Moscow\"},{\"display_string\":\"Gulf Standard Time (Dubai)\",\"offset\":240,\"timezone\":\"Asia/Dubai\"},{\"display_string\":\"Georgia Standard Time (Tbilisi)\",\"offset\":240,\"timezone\":\"Asia/Tbilisi\"},{\"display_string\":\"Mauritius Standard Time (Mauritius)\",\"offset\":240,\"timezone\":\"Indian/Mauritius\"},{\"display_string\":\"Azerbaijan Standard Time (Baku)\",\"offset\":240,\"timezone\":\"Asia/Baku\"},{\"display_string\":\"Armenia Standard Time (Yerevan)\",\"offset\":240,\"timezone\":\"Asia/Yerevan\"},{\"display_string\":\"Afghanistan Time (Kabul)\",\"offset\":270,\"timezone\":\"Asia/Kabul\"},{\"display_string\":\"Pakistan Standard Time (Karachi)\",\"offset\":300,\"timezone\":\"Asia/Karachi\"},{\"display_string\":\"Turkmenistan Standard Time (Ashgabat)\",\"offset\":300,\"timezone\":\"Asia/Ashgabat\"},{\"display_string\":\"West Kazakhstan Time (Oral)\",\"offset\":300,\"timezone\":\"Asia/Oral\"},{\"display_string\":\"India Standard Time (Kolkata)\",\"offset\":330,\"timezone\":\"Asia/Kolkata\"},{\"display_string\":\"India Standard Time (Colombo)\",\"offset\":330,\"timezone\":\"Asia/Colombo\"},{\"display_string\":\"Nepal Time (Kathmandu)\",\"offset\":345,\"timezone\":\"Asia/Kathmandu\"},{\"display_string\":\"Yekaterinburg Standard Time (Yekaterinburg)\",\"offset\":300,\"timezone\":\"Asia/Yekaterinburg\"},{\"display_string\":\"East Kazakhstan Time (Almaty)\",\"offset\":360,\"timezone\":\"Asia/Almaty\"},{\"display_string\":\"Bangladesh Standard Time (Dhaka)\",\"offset\":360,\"timezone\":\"Asia/Dhaka\"},{\"display_string\":\"Myanmar Time (Rangoon)\",\"offset\":390,\"timezone\":\"Asia/Rangoon\"},{\"display_string\":\"Indochina Time (Bangkok)\",\"offset\":420,\"timezone\":\"Asia/Bangkok\"},{\"display_string\":\"Western Indonesia Time (Jakarta)\",\"offset\":420,\"timezone\":\"Asia/Jakarta\"},{\"display_string\":\"Omsk Standard Time (Omsk)\",\"offset\":360,\"timezone\":\"Asia/Omsk\"},{\"display_string\":\"Novosibirsk Standard Time (Novosibirsk)\",\"offset\":420,\"timezone\":\"Asia/Novosibirsk\"},{\"display_string\":\"China Standard Time (Shanghai)\",\"offset\":480,\"timezone\":\"Asia/Shanghai\"},{\"display_string\":\"Hong Kong Standard Time (Hong Kong)\",\"offset\":480,\"timezone\":\"Asia/Hong_Kong\"},{\"display_string\":\"Malaysia Time (Kuala Lumpur)\",\"offset\":480,\"timezone\":\"Asia/Kuala_Lumpur\"},{\"display_string\":\"Singapore Standard Time (Singapore)\",\"offset\":480,\"timezone\":\"Asia/Singapore\"},{\"display_string\":\"Philippine Standard Time (Manila)\",\"offset\":480,\"timezone\":\"Asia/Manila\"},{\"display_string\":\"Taipei Standard Time (Taipei)\",\"offset\":480,\"timezone\":\"Asia/Taipei\"},{\"display_string\":\"Central Indonesia Time (Makassar)\",\"offset\":480,\"timezone\":\"Asia/Makassar\"},{\"display_string\":\"Krasnoyarsk Standard Time (Krasnoyarsk)\",\"offset\":420,\"timezone\":\"Asia/Krasnoyarsk\"},{\"display_string\":\"Australian Western Standard Time (Perth)\",\"offset\":480,\"timezone\":\"Australia/Perth\"},{\"display_string\":\"Australian Central Western Standard Time (Eucla)\",\"offset\":525,\"timezone\":\"Australia/Eucla\"},{\"display_string\":\"Irkutsk Standard Time (Irkutsk)\",\"offset\":480,\"timezone\":\"Asia/Irkutsk\"},{\"display_string\":\"Korean Standard Time (Seoul)\",\"offset\":540,\"timezone\":\"Asia/Seoul\"},{\"display_string\":\"Japan Standard Time (Tokyo)\",\"offset\":540,\"timezone\":\"Asia/Tokyo\"},{\"display_string\":\"Eastern Indonesia Time (Jayapura)\",\"offset\":540,\"timezone\":\"Asia/Jayapura\"},{\"display_string\":\"Australian Central Standard Time (Adelaide)\",\"offset\":570,\"timezone\":\"Australia/Adelaide\"},{\"display_string\":\"Australian Central Standard Time (Darwin)\",\"offset\":570,\"timezone\":\"Australia/Darwin\"},{\"display_string\":\"Australian Eastern Standard Time (Brisbane)\",\"offset\":600,\"timezone\":\"Australia/Brisbane\"},{\"display_string\":\"Australian Eastern Standard Time (Hobart)\",\"offset\":600,\"timezone\":\"Australia/Hobart\"},{\"display_string\":\"Australian Eastern Standard Time (Sydney)\",\"offset\":600,\"timezone\":\"Australia/Sydney\"},{\"display_string\":\"Yakutsk Standard Time (Yakutsk)\",\"offset\":540,\"timezone\":\"Asia/Yakutsk\"},{\"display_string\":\"Chamorro Standard Time (Guam)\",\"offset\":600,\"timezone\":\"Pacific/Guam\"},{\"display_string\":\"Papua New Guinea Time (Port Moresby)\",\"offset\":600,\"timezone\":\"Pacific/Port_Moresby\"},{\"display_string\":\"Vladivostok Standard Time (Vladivostok)\",\"offset\":600,\"timezone\":\"Asia/Vladivostok\"},{\"display_string\":\"Sakhalin Standard Time (Sakhalin)\",\"offset\":660,\"timezone\":\"Asia/Sakhalin\"},{\"display_string\":\"Magadan Standard Time (Magadan)\",\"offset\":660,\"timezone\":\"Asia/Magadan\"},{\"display_string\":\"New Zealand Standard Time (Auckland)\",\"offset\":720,\"timezone\":\"Pacific/Auckland\"},{\"display_string\":\"Fiji Standard Time (Fiji)\",\"offset\":720,\"timezone\":\"Pacific/Fiji\"},{\"display_string\":\"Marshall Islands Time (Majuro)\",\"offset\":720,\"timezone\":\"Pacific/Majuro\"},{\"display_string\":\"Tonga Standard Time (Tongatapu)\",\"offset\":780,\"timezone\":\"Pacific/Tongatapu\"},{\"display_string\":\"Apia Standard Time (Apia)\",\"offset\":780,\"timezone\":\"Pacific/Apia\"},{\"display_string\":\"Line Islands Time (Kiritimati)\",\"offset\":840,\"timezone\":\"Pacific/Kiritimati\"}]"
+						}
+					]
+				},
+				{
+					"name": "Locales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/supported_locales",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"supported_locales"
+							]
+						},
+						"description": "Simply returns a list of all supported locales."
+					},
+					"response": [
+						{
+							"id": "8bb54158-daf5-4fdc-85a0-7cf95179dde1",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/supported_locales",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"supported_locales"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3553",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"display_string\":\"Amharic - አማርኛ\",\"locale\":\"am\"},{\"display_string\":\"Arabic - العربية\",\"locale\":\"ar\"},{\"display_string\":\"Bulgarian - български\",\"locale\":\"bg\"},{\"display_string\":\"Bangla - বাংলা\",\"locale\":\"bn\"},{\"display_string\":\"Catalan - català\",\"locale\":\"ca\"},{\"display_string\":\"Czech - čeština\",\"locale\":\"cs\"},{\"display_string\":\"Danish - dansk\",\"locale\":\"da\"},{\"display_string\":\"German - Deutsch\",\"locale\":\"de\"},{\"display_string\":\"Greek - Ελληνικά\",\"locale\":\"el\"},{\"display_string\":\"English (United Kingdom)\",\"locale\":\"en-GB\"},{\"display_string\":\"English (United States)\",\"locale\":\"en-US\"},{\"display_string\":\"Spanish - español\",\"locale\":\"es\"},{\"display_string\":\"Estonian - eesti\",\"locale\":\"et\"},{\"display_string\":\"Persian - فارسی\",\"locale\":\"fa\"},{\"display_string\":\"Finnish - suomi\",\"locale\":\"fi\"},{\"display_string\":\"Filipino\",\"locale\":\"fil\"},{\"display_string\":\"French - français\",\"locale\":\"fr\"},{\"display_string\":\"Gujarati - ગુજરાતી\",\"locale\":\"gu\"},{\"display_string\":\"Hebrew - עברית\",\"locale\":\"he\"},{\"display_string\":\"Hindi - हिन्दी\",\"locale\":\"hi\"},{\"display_string\":\"Croatian - hrvatski\",\"locale\":\"hr\"},{\"display_string\":\"Hungarian - magyar\",\"locale\":\"hu\"},{\"display_string\":\"Indonesian - Indonesia\",\"locale\":\"id\"},{\"display_string\":\"Italian - italiano\",\"locale\":\"it\"},{\"display_string\":\"Japanese - 日本語\",\"locale\":\"ja\"},{\"display_string\":\"Kannada - ಕನ್ನಡ\",\"locale\":\"kn\"},{\"display_string\":\"Korean - 한국어\",\"locale\":\"ko\"},{\"display_string\":\"Lithuanian - lietuvių\",\"locale\":\"lt\"},{\"display_string\":\"Latvian - latviešu\",\"locale\":\"lv\"},{\"display_string\":\"Malayalam - മലയാളം\",\"locale\":\"ml\"},{\"display_string\":\"Marathi - मराठी\",\"locale\":\"mr\"},{\"display_string\":\"Malay - Melayu\",\"locale\":\"ms\"},{\"display_string\":\"Norwegian Bokmål - norsk bokmål\",\"locale\":\"nb\"},{\"display_string\":\"Dutch - Nederlands\",\"locale\":\"nl\"},{\"display_string\":\"Polish - polski\",\"locale\":\"pl\"},{\"display_string\":\"Portuguese (Portugal) - português (Portugal)\",\"locale\":\"pt-PT\"},{\"display_string\":\"Romanian - română\",\"locale\":\"ro\"},{\"display_string\":\"Russian - русский\",\"locale\":\"ru\"},{\"display_string\":\"Slovak - slovenčina\",\"locale\":\"sk\"},{\"display_string\":\"Slovenian - slovenščina\",\"locale\":\"sl\"},{\"display_string\":\"Serbian - српски\",\"locale\":\"sr\"},{\"display_string\":\"Swedish - svenska\",\"locale\":\"sv\"},{\"display_string\":\"Swahili - Kiswahili\",\"locale\":\"sw\"},{\"display_string\":\"Tamil - தமிழ்\",\"locale\":\"ta\"},{\"display_string\":\"Telugu - తెలుగు\",\"locale\":\"te\"},{\"display_string\":\"Thai - ไทย\",\"locale\":\"th\"},{\"display_string\":\"Turkish - Türkçe\",\"locale\":\"tr\"},{\"display_string\":\"Ukrainian - українська\",\"locale\":\"uk\"},{\"display_string\":\"Vietnamese - Tiếng Việt\",\"locale\":\"vi\"},{\"display_string\":\"Chinese (Simplified) - 中文（简体）\",\"locale\":\"zh-CN\"},{\"display_string\":\"Chinese (Traditional) - 中文（繁體）\",\"locale\":\"zh-TW\"},{\"display_string\":\"Spanish (Latin America) - español (Latinoamérica)\",\"locale\":\"es-419\"},{\"display_string\":\"Portuguese (Brazil) - português (Brasil)\",\"locale\":\"pt-BR\"},{\"display_string\":\"English (Australia)\",\"locale\":\"en-AU\"},{\"display_string\":\"English (Canada)\",\"locale\":\"en-CA\"},{\"display_string\":\"English (India)\",\"locale\":\"en-IN\"},{\"display_string\":\"English (Singapore)\",\"locale\":\"en-SG\"},{\"display_string\":\"Spanish (United States) - español (Estados Unidos)\",\"locale\":\"es-US\"},{\"display_string\":\"French (Canada) - français (Canada)\",\"locale\":\"fr-CA\"}]"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a1acdc24-63b3-4e1e-8706-a5d3c47faf10",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "97a308fb-48ee-4d74-af24-43c82d2fa6f2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Device Settings",
+			"description": "This folder consists of all endpoints to modify and control the device.",
+			"item": [
+				{
+					"name": "Set Eureka Info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Living Room\",\r\n  \"settings\": {\r\n    \"control_notifications\": 2\r\n  },\r\n  \"opt_in\": {\r\n    \"opencast\": true,\r\n    \"preview_channel\": true,\r\n    \"remote_ducking\": true,\r\n    \"stats\": true\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/set_eureka_info",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"set_eureka_info"
+							]
+						},
+						"description": "This can set custom values to some options.  \nOnly fields to be modified need to be sent, not all. The example has all modifiable fields (#TODO).  \nSending non-existant fields will still return a 200 OK, but they are not saved."
+					},
+					"response": [
+						{
+							"id": "cdb54204-c65f-469a-b675-fee0cf815d5e",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Living Room\",\r\n  \"settings\": {\r\n    \"control_notifications\": 2\r\n  },\r\n  \"opt_in\": {\r\n    \"opencast\": true,\r\n    \"preview_channel\": true,\r\n    \"remote_ducking\": true,\r\n    \"stats\": true\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/set_eureka_info",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"set_eureka_info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Night Mode settings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"enabled\": false,\r\n  \"do_not_disturb\": true,\r\n  \"led_brightness\": 0.44999998807907104,\r\n  \"volume\": 0.46000000834465027,\r\n  \"demo_to_user\": true,\r\n  \"windows\": [\r\n    {\r\n      \"length_hours\": 8,\r\n      \"days\": [\r\n        0,\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5,\r\n        6\r\n      ],\r\n      \"start_hour\": 22\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/set_night_mode_params",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"set_night_mode_params"
+							]
+						},
+						"description": "This sets night mode options.  \nTo view currently set values, use /setup/eureka_info.  \nIf `enabled` is set to false, night mode is disabled and the other values do not matter.  \n`led_brightness` and `volume` refer to the maximum LED Brightness and Volume that is set during night mode.  \n`demo_to_user` is always set to `true` so change in values will be visible in realtime (like brightness).  \n`windows`: A combination of `length_hours` and `start_hour` is used to define start and end times for night mode. In this example, night mode starts at 10 PM (22) and ends at 6 AM (8 hours later). `windows.days` is an array of days of week when night mode will be enabled. Example: 0->Sunday, 1-> Monday, ..., 6->Saturday."
+					},
+					"response": [
+						{
+							"id": "817cb093-3817-48bd-bf00-7ea66d65f900",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"enabled\": false,\r\n  \"do_not_disturb\": true,\r\n  \"led_brightness\": 0.44999998807907104,\r\n  \"volume\": 0.46000000834465027,\r\n  \"demo_to_user\": true,\r\n  \"windows\": [\r\n    {\r\n      \"length_hours\": 8,\r\n      \"days\": [\r\n        0,\r\n        1,\r\n        2,\r\n        3,\r\n        4,\r\n        5,\r\n        6\r\n      ],\r\n      \"start_hour\": 22\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/set_night_mode_params",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"set_night_mode_params"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"do_not_disturb\":true,\"enabled\":false,\"led_brightness\":0.44999998807907104,\"volume\":0.46000000834465027,\"windows\":[{\"days\":[0,1,2,3,4,5,6],\"length_hours\":8.0,\"start_hour\":22.0}]}"
+						}
+					]
+				},
+				{
+					"name": "Reboot and Factory Reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"params\": \"now\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/reboot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"reboot"
+							]
+						},
+						"description": "This can simply reboot the device (`params: \"now\"`) or factory reset the device (`params: \"fdr\"`)."
+					},
+					"response": [
+						{
+							"id": "4a4efca1-1147-40b6-8131-6d0da986a666",
+							"name": "Reboot",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"params\": \"now\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/reboot",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"reboot"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "0b8fece9-df65-4384-91df-ac4dc48fd5d5",
+							"name": "Factory Reset",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"params\": \"fdr\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/reboot",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"reboot"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ec2ff974-7e51-4971-9184-bc4b4dcbd28a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "525ca99e-299b-468e-b3ae-bab88e20c2f4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Assistant",
+			"description": "This folder contains all endpoints related to Assistant's tasks like Do Not Disturb, Alarms and Timers, Accessibility and equalizer.",
+			"item": [
+				{
+					"name": "Do Not Disturb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/notifications",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"notifications"
+							]
+						},
+						"description": "This is for the Do Not Disturb option. Sending an empty-body POST returns the current value. Sending a new value changes it."
+					},
+					"response": [
+						{
+							"id": "f9074bc6-ed6f-43f1-921b-3d6183e16c7c",
+							"name": "Get current state",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/assistant/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"notifications_enabled\":true}"
+						},
+						{
+							"id": "f319ce96-4348-4776-b5d6-6ba1ccf07e2a",
+							"name": "Set new state",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"notifications_enabled\": true\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/notifications",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"notifications_enabled\":true}"
+						}
+					]
+				},
+				{
+					"name": "Accessibility",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hotword_enabled\": false,\r\n  \"endpoint_enabled\": false\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/a11y_mode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"a11y_mode"
+							]
+						},
+						"description": "This controls Accessibility sounds. `hotword_enabled` is for 'Play start sound' and `endpoint_enabled` is for 'Play end sound'.  \nSending an empty-body POST request returns the current values.  \nEither of the fields or both can be sent and new values will be saved."
+					},
+					"response": [
+						{
+							"id": "0c84583b-abe0-4de6-a34a-cccf3a5bc442",
+							"name": "Get current values",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/a11y_mode",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"a11y_mode"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"endpoint_enabled\":false,\"hotword_enabled\":false}"
+						},
+						{
+							"id": "723bb998-1614-4522-b08e-a20781f5bac2",
+							"name": "Set new values",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"hotword_enabled\": false,\r\n  \"endpoint_enabled\": false\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/a11y_mode",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"a11y_mode"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"endpoint_enabled\":false,\"hotword_enabled\":false}"
+						}
+					]
+				},
+				{
+					"name": "Get Alarms and Timers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/assistant/alarms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"alarms"
+							]
+						},
+						"description": "This gives a list of all active alarms and timers.\n\nBoth alarms and timers have `id`s which can be used to delete them. (There is no known way of creating/deleting yet). The value of `status` have different meanings for alarms and timers (given below).\n\nAlarms have `date_pattern` and `time_pattern` with day, month, year, hour, minute, second. `fire_time` is the same in unix time (milliseconds, not seconds).  \n`status` is 1 for set up and 2 for ringing.\n\nTimers have `original_duration` is the original duration.  \n`status` is 1 for set up and 3 for ringing."
+					},
+					"response": [
+						{
+							"id": "3ed9b424-a9fc-43d4-a669-6e3c80e74dad",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/assistant/alarms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"alarms"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"alarm\": [\r\n      {\r\n        \"date_pattern\": {\r\n          \"day\": 15,\r\n          \"month\": 1,\r\n          \"year\": 2018\r\n        },\r\n        \"time_pattern\": {\r\n          \"hour\": 6,\r\n          \"minute\": 50,\r\n          \"second\": 0\r\n        },\r\n        \"fire_time\": 1515995400000.0,\r\n        \"id\": \"alarm/xxx\",\r\n        \"status\": 1\r\n      }\r\n    ],\r\n    \"timer\": [\r\n      {\r\n        \"fire_time\": 1516176765589,\r\n        \"id\": \"timer/xxx\",\r\n        \"original_duration\": 20000,\r\n        \"status\": 1\r\n      }\r\n    ]\r\n  }"
+						}
+					]
+				},
+				{
+					"name": "Delete Alarms and Timers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [ \"timer\\/xxx\", \"alarm\\/xxx\" ]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/alarms/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"alarms",
+								"delete"
+							]
+						},
+						"description": "This deletes alarms and timers by their id.\n\n`ids` is a list of ids to be deleted. Sending invalid id still returns a 200 OK. The `/` in the ids have to be escaped like `\\/`."
+					},
+					"response": [
+						{
+							"id": "51a48497-7d85-4e7f-908e-c1c6bf513b2e",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"ids\": [ \"timer\\/xxx\", \"alarm\\/xxx\" ]\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/alarms/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"alarms",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true}"
+						}
+					]
+				},
+				{
+					"name": "Alarm Volume",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"volume\": 1\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/assistant/alarms/volume",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"assistant",
+								"alarms",
+								"volume"
+							]
+						},
+						"description": "This gets and sets alarms and timers volume.  \n**Note:** This is not the same as normal volume.\n\nVolume is a float number in [0, 1] where 0 is minimum and 1 is maximum.  \nSending an empty body gets the volume. Sending `volume` sets the volume."
+					},
+					"response": [
+						{
+							"id": "21d6bac7-b1a2-4f7d-ae3d-5d4fef205745",
+							"name": "Get volume",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/alarms/volume",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"alarms",
+										"volume"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"volume\":1.0}"
+						},
+						{
+							"id": "dd958a8a-2004-489f-9b6b-14144b6ab577",
+							"name": "Set volume",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"volume\": 1\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/assistant/alarms/volume",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"assistant",
+										"alarms",
+										"volume"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"volume\":1.0}"
+						}
+					]
+				},
+				{
+					"name": "Set Equalizer Values",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"low_shelf\": {\r\n    \"gain_db\": 0\r\n  },\r\n  \"high_shelf\": {\r\n    \"gain_db\": 0\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/user_eq/set_equalizer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"user_eq",
+								"set_equalizer"
+							]
+						},
+						"description": "This can only set new equalizer values. To get already set values, use /setup/eureka_info.\n\nThe body is mandatory. It can either contain `low_shelf` or `high_shelf` or both.\n\n`low_shelf.gain_db` and `high_shelf.gain_db` refer to **bass** and **treble** respectively.\n\nDefault values are 0 for both.  \nWhile the slider in the Home app only ranges from -6 to +6, they can be set to any integer like 50 or -100. These changes persist."
+					},
+					"response": [
+						{
+							"id": "5fa913fb-46c7-408a-9260-6e4da7c71548",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"low_shelf\": {\r\n    \"gain_db\": 0\r\n  },\r\n  \"high_shelf\": {\r\n    \"gain_db\": 0\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/user_eq/set_equalizer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"user_eq",
+										"set_equalizer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15937fd2-c410-454e-9888-8ddaa1d92513",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d478fcf2-de43-470f-b7f2-f6be76202bcb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bluetooth",
+			"description": "This folder contains Bluetooth related endpoints.",
+			"item": [
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"status"
+							]
+						},
+						"description": "> **There are 2 parts of Bluetooth.**\n>\n> *Part 1*: Devices like phones connect to Home and play audio through Home.  \n> For this, /setup/bluetooth/discovery is used to make Home discoverable. Then devices can connect to it as if Home is just another bluetooth speaker.\n>\n> *Part 2*: Bluetooth speakers connect to Home and Home plays audio through the speakers.\n> For this, /setup/bluetooth/scan and /setup/bluetooth/scan_results are used to connect to other speakers.\n>\n> The other endpoints are common for both parts.\n\n\n**For both parts**\n\nThis gives the status of all bluetooth things.\nNot sure what `audio_mode` is.  \n`discovery_enabled` states whether Home is discoverable. (**Part 1**)  \n`connecting_devices` is a list of all media sources (like phones) connected to Home. (**Part 1**)  \n`scanning_enabled` states whether Home scanning for other bluetooth speakers/devices. (**Part 2**)  \n`connected_devices` is a list of all speakers connected to Home. (**Part 2**)"
+					},
+					"response": [
+						{
+							"id": "427fae12-e053-4a28-9baf-64eaa5f2b9d5",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "114",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"audio_mode\": 0,\n    \"connecting_devices\": [],\n    \"connected_devices\": [\n        {\n            \"device\": {\n                \"bond_date\": 1529248165656.613,\n                \"device_class\": 2491396,\n                \"device_type\": 1,\n                \"last_connect_date\": 0,\n                \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n                \"name\": \"PHILIPS BT64\",\n                \"rssi\": -255,\n                \"service_uuids\": [\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                    \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n                ]\n            },\n            \"enabled_profiles\": 2\n        }\n    ],\n    \"remote_sink\": {\n        \"bond_date\": 1529248165656.613,\n        \"device_class\": 2491396,\n        \"device_type\": 1,\n        \"last_connect_date\": 0,\n        \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n        \"name\": \"PHILIPS BT64\",\n        \"rssi\": -255,\n        \"service_uuids\": [\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n        ]\n    },\n    \"discovery_enabled\": false,\n    \"scanning_enabled\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Paired Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/get_bonded",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"get_bonded"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For both parts**\n\nThis gives a list of all paired or 'bonded' devices. The response field names are self-descriptive."
+					},
+					"response": [
+						{
+							"id": "74a0f584-42e5-41c3-aa23-66ff41cc6586",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/get_bonded",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"get_bonded"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "[\r\n    {\r\n      \"bond_date\": 1503212407260.55,\r\n      \"device_class\": 5898764,\r\n      \"device_type\": 1,\r\n      \"last_connect_date\": 1514807829482.111,\r\n      \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\r\n      \"name\": \"Device Name\",\r\n      \"rssi\": -255,\r\n      \"service_uuids\": [\r\n        \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\r\n        \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\r\n      ]\r\n    }\r\n  ]"
+						}
+					]
+				},
+				{
+					"name": "Forget paired device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n\t\"bond\": false\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/bond",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"bond"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For both parts**\n\nThis is to forget paired devices by mac address. Works for both kinds of devices (Part 1 and Part 2)."
+					},
+					"response": [
+						{
+							"id": "1df8c4fb-c7c1-4332-8f06-c8ca29b50a65",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n\t\"bond\": false\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/bond",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"bond"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Change Discoverability",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"enable_discovery\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/discovery",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"discovery"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For Part 1 only**\n\nThis enables/disables Home's bluetooth discovery and other devices can pair with Home (where Home acts as a speaker)."
+					},
+					"response": [
+						{
+							"id": "288b9c98-f3be-4896-acfd-fb9deb5dd1a7",
+							"name": "Set discoverable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"enable_discovery\": true\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/discovery",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"discovery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "8bc9b19a-c03a-4acb-95a1-359764e84f51",
+							"name": "Set non-discoverable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"enable_discovery\": false\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/discovery",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"discovery"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Scan for devices",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"enable\": true,\n\t\"clear_results\": true,\n\t\"timeout\": 60\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/scan",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"scan"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For Part 2 only**\n\nThis initiates scan for other bluetooth speakers/devices. Scan results will be updated continuously for `timeout` seconds.  \nTo get the scan results, see /setup/bluetooth/scan_results."
+					},
+					"response": [
+						{
+							"id": "efa82951-030b-4e24-9af9-800449e250c6",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"enable\": true,\n\t\"clear_results\": true,\n\t\"timeout\": 60\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/scan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"scan"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Scan Results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/scan_results",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"scan_results"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For Part 2 only**\n\nThis returns a list of all nearby bluetooth devices. While the Home app only shows speakers, this list contains all devices including TVs, mobiles, etc.\n\n`rssi` is signal strength, `name` is name, `mac_address` is mac address.  \n`device_class` and `device_type` are bluetooth codes.  \n\nThe Home app only lists those devices with `expected_profiles` > 0. Basically, the device should function speaker."
+					},
+					"response": [
+						{
+							"id": "1dedfb47-c0dd-4612-8918-70ac080cabfd",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/scan_results",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"scan_results"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"device_class\": 525372,\n        \"device_type\": 3,\n        \"expected_profiles\": 0,\n        \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n        \"name\": \"KD-49X8200E\",\n        \"rssi\": -90\n    },\n    {\n        \"device_class\": 5898764,\n        \"device_type\": 1,\n        \"expected_profiles\": 0,\n        \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n        \"name\": \"vivo 1714\",\n        \"rssi\": -96\n    },\n    {\n        \"device_class\": 2491396,\n        \"device_type\": 1,\n        \"expected_profiles\": 1,\n        \"mac_address\": \"xx:xx:xx:xx:xx:xx\",\n        \"name\": \"Bluetooth Speaker\",\n        \"rssi\": -93\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Pair with Speaker",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mac_address\": \"54:13:79:49:19:22\",\n\t\"connect\": true,\n\t\"profile\": 2\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/bluetooth/connect",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"bluetooth",
+								"connect"
+							]
+						},
+						"description": "*See note for Bluetooth under `/setup/bluetooth/status`*\n\n**For Part 2 only**\n\nThis pairs with other bluetooth speakers by mac address."
+					},
+					"response": [
+						{
+							"id": "f6b57595-d230-4356-9efc-02eeda7cde56",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"mac_address\": \"54:13:79:49:19:22\",\n\t\"connect\": true,\n\t\"profile\": 2\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/bluetooth/connect",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"bluetooth",
+										"connect"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1198bde6-7694-4f66-a10f-b3c569ed723c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "90f54870-8c04-4b19-85c6-f4c5bea3fa21",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Wifi",
+			"description": "This folder contains Wi-Fi related endpoints.",
+			"item": [
+				{
+					"name": "Get Saved Networks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/configured_networks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"configured_networks"
+							]
+						},
+						"description": "This gets a list of all saved Wi-Fi networks.\n\nEach network has `ssid`, `wpa_auth`, `wpa_cipher` and `wpa_id`.  \n`wpa_id` is an incrementing number used to identify a saved network.  \n#TODO: Add values for `wpa_auth` and `wpa_cipher`."
+					},
+					"response": [
+						{
+							"id": "7fa433cc-7b85-462d-9297-7b411a3a2ca1",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/configured_networks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"configured_networks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n      \"ssid\": \"Wifi name\",\n      \"wpa_auth\": 7,\n      \"wpa_cipher\": 4,\n      \"wpa_id\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Scan for Networks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/scan_wifi",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"scan_wifi"
+							]
+						},
+						"description": "This initiates scanning for Wi-Fi networks.\n\nFor Chromecasts, this is required to populate results. For Google Home, this is not required. /setup/scan_results is always updated. (Related to [GitHub #22](https://github.com/rithvikvibhu/GHLocalApi/issues/22))."
+					},
+					"response": [
+						{
+							"id": "8d3f153f-cd04-4b44-923f-780f846892c2",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/scan_wifi",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"scan_wifi"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get Wi-Fi Scan Results",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/setup/scan_results",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"scan_results"
+							]
+						},
+						"description": "This gets a list of all nearby Wi-Fi access points."
+					},
+					"response": [
+						{
+							"id": "ab7fa4b6-e8ea-43e2-933f-5446f980006c",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/setup/scan_results",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"scan_results"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\r\n      \"bssid\": \"APBSSID1\",\r\n      \"signal_level\": -20,\r\n      \"ssid\": \"APSSID1\",\r\n      \"wpa_auth\": 7,\r\n      \"wpa_cipher\": 4,\r\n      \"wpa_id\": 0\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Connect to Wi-Fi Network",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bssid\": \"5c:0a:xx:xx:xx:xx\",\r\n    \"signal_level\": -42,\r\n    \"ssid\": \"myotherssid\",\r\n    \"wpa_auth\": 7,\r\n    \"wpa_cipher\": 4,\r\n    \"enc_passwd\": \"xxxxxfPY=\"\r\n  }"
+						},
+						"url": {
+							"raw": "{{url}}/setup/connect_wifi",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"connect_wifi"
+							]
+						},
+						"description": "**Note:** Not sure how the password is encrypted. Might be using the public certificate from /setup/eureka_info. So this cannot be used as of now. If someone figures it out, [create a new issue here](https://github.com/rithvikvibhu/GHLocalApi/issues/new)."
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Wi-Fi Network",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"wpa_id\": 0\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/setup/forget_wifi",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"forget_wifi"
+							]
+						},
+						"description": "This is to forget a saved network by `wpa_id`. Get the `wpa_id` from /setup/configured_networks"
+					},
+					"response": [
+						{
+							"id": "17f8d7e6-798f-4239-9bb7-f40e52d6ba81",
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"wpa_id\": 0\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/setup/forget_wifi",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"forget_wifi"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "304902e8-0d2b-4e90-9d3e-d74be38b2f47",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "92ecde5b-cf57-4169-a32e-5a239252ab00",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fd194ab3-e245-4350-a46f-0f20db78b9ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bb376f2a-de9d-4917-a65c-4a267585bc7f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,23 @@
+
+# Multizone Settings
+Change multizone settings. uuid can be found in eureka_info
+
+
+## Leave group [/setup/multizone/leave_group]
+Leave a multizone group.
+### Leave group [POST]
+
+  + Request (application/json)
+      { "uuid": "xxxxx" }
+
+  + Response 200
+
+
+## Disband group [/setup/multizone/disband_group]
+Disband (delete) a multizone group.
+### Disband group [POST]
+
+  + Request (application/json)
+      { "uuid": "xxxxx" }
+
+  + Response 200

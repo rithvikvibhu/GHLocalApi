@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "dist": "node ./dist.js"
+        "dist": "node ./apib2html.js"
     },
     "dependencies": {
         "aglio": "^2.3.0",
