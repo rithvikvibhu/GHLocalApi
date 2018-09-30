@@ -8,7 +8,6 @@
 	"item": [
 		{
 			"name": "Device Info",
-			"description": "Endpoints in this folder give information about the device.",
 			"item": [
 				{
 					"name": "Eureka Info",
@@ -40,7 +39,6 @@
 					},
 					"response": [
 						{
-							"id": "1d2ced22-848a-4850-a895-6033e2fc744a",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -129,7 +127,6 @@
 					},
 					"response": [
 						{
-							"id": "a77f6d2e-6b78-4b5b-9410-be5b8d1a43bd",
 							"name": "Invalid App ID",
 							"originalRequest": {
 								"method": "POST",
@@ -162,7 +159,6 @@
 							"body": ""
 						},
 						{
-							"id": "0e6922b8-4ef8-4800-9668-4a5decacd166",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -242,7 +238,6 @@
 					},
 					"response": [
 						{
-							"id": "9fc077dc-9522-41ce-9c03-0765ce00982f",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -322,7 +317,6 @@
 					},
 					"response": [
 						{
-							"id": "860dd98c-2cd7-4925-a11e-41218ec8e435",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -403,7 +397,6 @@
 					},
 					"response": [
 						{
-							"id": "a3ae3fc8-e7fa-4910-860e-eee463e10063",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -474,7 +467,6 @@
 					},
 					"response": [
 						{
-							"id": "9e3eff13-c1fa-4d21-bd72-5d7f8aebdc7f",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -524,8 +516,97 @@
 							"body": "[{\"display_string\":\"Amharic - አማርኛ\",\"locale\":\"am\"},{\"display_string\":\"Arabic - العربية\",\"locale\":\"ar\"},{\"display_string\":\"Bulgarian - български\",\"locale\":\"bg\"},{\"display_string\":\"Bangla - বাংলা\",\"locale\":\"bn\"},{\"display_string\":\"Catalan - català\",\"locale\":\"ca\"},{\"display_string\":\"Czech - čeština\",\"locale\":\"cs\"},{\"display_string\":\"Danish - dansk\",\"locale\":\"da\"},{\"display_string\":\"German - Deutsch\",\"locale\":\"de\"},{\"display_string\":\"Greek - Ελληνικά\",\"locale\":\"el\"},{\"display_string\":\"English (United Kingdom)\",\"locale\":\"en-GB\"},{\"display_string\":\"English (United States)\",\"locale\":\"en-US\"},{\"display_string\":\"Spanish - español\",\"locale\":\"es\"},{\"display_string\":\"Estonian - eesti\",\"locale\":\"et\"},{\"display_string\":\"Persian - فارسی\",\"locale\":\"fa\"},{\"display_string\":\"Finnish - suomi\",\"locale\":\"fi\"},{\"display_string\":\"Filipino\",\"locale\":\"fil\"},{\"display_string\":\"French - français\",\"locale\":\"fr\"},{\"display_string\":\"Gujarati - ગુજરાતી\",\"locale\":\"gu\"},{\"display_string\":\"Hebrew - עברית\",\"locale\":\"he\"},{\"display_string\":\"Hindi - हिन्दी\",\"locale\":\"hi\"},{\"display_string\":\"Croatian - hrvatski\",\"locale\":\"hr\"},{\"display_string\":\"Hungarian - magyar\",\"locale\":\"hu\"},{\"display_string\":\"Indonesian - Indonesia\",\"locale\":\"id\"},{\"display_string\":\"Italian - italiano\",\"locale\":\"it\"},{\"display_string\":\"Japanese - 日本語\",\"locale\":\"ja\"},{\"display_string\":\"Kannada - ಕನ್ನಡ\",\"locale\":\"kn\"},{\"display_string\":\"Korean - 한국어\",\"locale\":\"ko\"},{\"display_string\":\"Lithuanian - lietuvių\",\"locale\":\"lt\"},{\"display_string\":\"Latvian - latviešu\",\"locale\":\"lv\"},{\"display_string\":\"Malayalam - മലയാളം\",\"locale\":\"ml\"},{\"display_string\":\"Marathi - मराठी\",\"locale\":\"mr\"},{\"display_string\":\"Malay - Melayu\",\"locale\":\"ms\"},{\"display_string\":\"Norwegian Bokmål - norsk bokmål\",\"locale\":\"nb\"},{\"display_string\":\"Dutch - Nederlands\",\"locale\":\"nl\"},{\"display_string\":\"Polish - polski\",\"locale\":\"pl\"},{\"display_string\":\"Portuguese (Portugal) - português (Portugal)\",\"locale\":\"pt-PT\"},{\"display_string\":\"Romanian - română\",\"locale\":\"ro\"},{\"display_string\":\"Russian - русский\",\"locale\":\"ru\"},{\"display_string\":\"Slovak - slovenčina\",\"locale\":\"sk\"},{\"display_string\":\"Slovenian - slovenščina\",\"locale\":\"sl\"},{\"display_string\":\"Serbian - српски\",\"locale\":\"sr\"},{\"display_string\":\"Swedish - svenska\",\"locale\":\"sv\"},{\"display_string\":\"Swahili - Kiswahili\",\"locale\":\"sw\"},{\"display_string\":\"Tamil - தமிழ்\",\"locale\":\"ta\"},{\"display_string\":\"Telugu - తెలుగు\",\"locale\":\"te\"},{\"display_string\":\"Thai - ไทย\",\"locale\":\"th\"},{\"display_string\":\"Turkish - Türkçe\",\"locale\":\"tr\"},{\"display_string\":\"Ukrainian - українська\",\"locale\":\"uk\"},{\"display_string\":\"Vietnamese - Tiếng Việt\",\"locale\":\"vi\"},{\"display_string\":\"Chinese (Simplified) - 中文（简体）\",\"locale\":\"zh-CN\"},{\"display_string\":\"Chinese (Traditional) - 中文（繁體）\",\"locale\":\"zh-TW\"},{\"display_string\":\"Spanish (Latin America) - español (Latinoamérica)\",\"locale\":\"es-419\"},{\"display_string\":\"Portuguese (Brazil) - português (Brasil)\",\"locale\":\"pt-BR\"},{\"display_string\":\"English (Australia)\",\"locale\":\"en-AU\"},{\"display_string\":\"English (Canada)\",\"locale\":\"en-CA\"},{\"display_string\":\"English (India)\",\"locale\":\"en-IN\"},{\"display_string\":\"English (Singapore)\",\"locale\":\"en-SG\"},{\"display_string\":\"Spanish (United States) - español (Estados Unidos)\",\"locale\":\"es-US\"},{\"display_string\":\"French (Canada) - français (Canada)\",\"locale\":\"fr-CA\"}]"
 						}
 					]
+				},
+				{
+					"name": "Test Internet Download Speed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"url\": \"https://storage.googleapis.com/reliability-speedtest/random.txt\"\n}\n"
+						},
+						"url": {
+							"raw": "{{url}}/setup/test_internet_download_speed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"setup",
+								"test_internet_download_speed"
+							]
+						},
+						"description": "This endpoint tests internet download speed. Any sample file URL can be provided."
+					},
+					"response": [
+						{
+							"name": "Default",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"url\": \"https://storage.googleapis.com/reliability-speedtest/random.txt\"\n}\n"
+								},
+								"url": {
+									"raw": "{{url}}/setup/test_internet_download_speed",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"setup",
+										"test_internet_download_speed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								}
+							],
+							"cookie": [],
+							"body": "{\"bytes_received\":31457280,\"response_code\":200,\"time_for_data_fetch\":4722,\"time_for_http_response\":316}"
+						}
+					]
 				}
 			],
+			"description": "Endpoints in this folder give information about the device.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -551,7 +632,6 @@
 		},
 		{
 			"name": "Device Settings",
-			"description": "This folder consists of all endpoints to modify and control the device.",
 			"item": [
 				{
 					"name": "Set Eureka Info",
@@ -581,7 +661,6 @@
 					},
 					"response": [
 						{
-							"id": "6cce2c89-3661-45ae-abec-914ce63bcd61",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -664,7 +743,6 @@
 					},
 					"response": [
 						{
-							"id": "652f35b0-5d5c-43c1-95f6-e15661bc3ed2",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -753,7 +831,6 @@
 					},
 					"response": [
 						{
-							"id": "7dd3e0cb-39e6-468c-bb71-91ae9916963e",
 							"name": "Reboot",
 							"originalRequest": {
 								"method": "POST",
@@ -806,7 +883,6 @@
 							"body": ""
 						},
 						{
-							"id": "54eb30f1-219d-436a-835a-7808eb7fb367",
 							"name": "Factory Reset",
 							"originalRequest": {
 								"method": "POST",
@@ -860,6 +936,7 @@
 					]
 				}
 			],
+			"description": "This folder consists of all endpoints to modify and control the device.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -885,7 +962,6 @@
 		},
 		{
 			"name": "Assistant",
-			"description": "This folder contains all endpoints related to Assistant's tasks like Do Not Disturb, Alarms and Timers, Accessibility and equalizer.",
 			"item": [
 				{
 					"name": "Do Not Disturb",
@@ -916,7 +992,6 @@
 					},
 					"response": [
 						{
-							"id": "c35bece6-39f3-421f-ac63-7da342b483a5",
 							"name": "Get current state",
 							"originalRequest": {
 								"method": "POST",
@@ -967,7 +1042,6 @@
 							"body": "{\"notifications_enabled\":true}"
 						},
 						{
-							"id": "79978d4f-2126-4cac-9ef9-0020542d95fa",
 							"name": "Set new state",
 							"originalRequest": {
 								"method": "POST",
@@ -1058,7 +1132,6 @@
 					},
 					"response": [
 						{
-							"id": "e66935db-5a74-4bda-85c9-f7ed75ffeaf2",
 							"name": "Get current values",
 							"originalRequest": {
 								"method": "POST",
@@ -1118,7 +1191,6 @@
 							"body": "{\"endpoint_enabled\":false,\"hotword_enabled\":false}"
 						},
 						{
-							"id": "98214a9b-1ff9-4278-af1d-061e61c7d343",
 							"name": "Set new values",
 							"originalRequest": {
 								"method": "POST",
@@ -1200,7 +1272,6 @@
 					},
 					"response": [
 						{
-							"id": "64290766-3e74-4391-b6a1-ff8ac19ba316",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -1282,7 +1353,6 @@
 					},
 					"response": [
 						{
-							"id": "40600e84-6b79-4d0e-a018-f0c5cf6b8682",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -1375,7 +1445,6 @@
 					},
 					"response": [
 						{
-							"id": "3509f4fc-9a4e-4cb4-939f-fc2924a945a8",
 							"name": "Get volume",
 							"originalRequest": {
 								"method": "POST",
@@ -1436,7 +1505,6 @@
 							"body": "{\"volume\":1.0}"
 						},
 						{
-							"id": "88151323-ff71-411e-9931-945b6b2c7d16",
 							"name": "Set volume",
 							"originalRequest": {
 								"method": "POST",
@@ -1527,7 +1595,6 @@
 					},
 					"response": [
 						{
-							"id": "80b4cd02-a900-41e5-9a03-072b9a9a0c20",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -1583,6 +1650,7 @@
 					]
 				}
 			],
+			"description": "This folder contains all endpoints related to Assistant's tasks like Do Not Disturb, Alarms and Timers, Accessibility and equalizer.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1608,7 +1676,6 @@
 		},
 		{
 			"name": "Bluetooth",
-			"description": "This folder contains Bluetooth related endpoints.",
 			"item": [
 				{
 					"name": "Status",
@@ -1631,7 +1698,6 @@
 					},
 					"response": [
 						{
-							"id": "0facc9cf-aca5-43c2-94b0-36ec0c25d0aa",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -1704,7 +1770,6 @@
 					},
 					"response": [
 						{
-							"id": "2794446f-ba78-4dda-a44c-a6d3b4ca81a0",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -1785,7 +1850,6 @@
 					},
 					"response": [
 						{
-							"id": "b36f5cfa-87a1-4c13-a774-785ab9881c94",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -1849,7 +1913,6 @@
 					},
 					"response": [
 						{
-							"id": "b36289c0-b73d-4a67-ba50-e5b764266ec5",
 							"name": "Set discoverable",
 							"originalRequest": {
 								"method": "POST",
@@ -1883,7 +1946,6 @@
 							"body": ""
 						},
 						{
-							"id": "ad870f4c-1d23-4ff2-99fa-b0868cbe3af0",
 							"name": "Set non-discoverable",
 							"originalRequest": {
 								"method": "POST",
@@ -1947,7 +2009,6 @@
 					},
 					"response": [
 						{
-							"id": "22dcb236-298e-413a-8a0a-16b370c80ad5",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -2023,7 +2084,6 @@
 					},
 					"response": [
 						{
-							"id": "d63f3885-1373-41ec-8c80-1f0e6be83552",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -2104,7 +2164,6 @@
 					},
 					"response": [
 						{
-							"id": "5250bf0e-7cd0-44fc-b6b6-30ae1e03265b",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -2160,6 +2219,7 @@
 					]
 				}
 			],
+			"description": "This folder contains Bluetooth related endpoints.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -2185,7 +2245,6 @@
 		},
 		{
 			"name": "Wifi",
-			"description": "This folder contains Wi-Fi related endpoints.",
 			"item": [
 				{
 					"name": "Get Saved Networks",
@@ -2207,7 +2266,6 @@
 					},
 					"response": [
 						{
-							"id": "a83ad9d7-9e6e-4f3c-9e21-e847868763a8",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -2253,7 +2311,6 @@
 					},
 					"response": [
 						{
-							"id": "c48d6bfd-0d9e-473b-9082-ace6324eb0bf",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -2299,7 +2356,6 @@
 					},
 					"response": [
 						{
-							"id": "cd550fff-6c56-486c-94db-21e8a18581a0",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -2381,7 +2437,6 @@
 					},
 					"response": [
 						{
-							"id": "834ff965-6262-4009-95e0-7ee7f4ae8ebc",
 							"name": "Default",
 							"originalRequest": {
 								"method": "POST",
@@ -2416,6 +2471,7 @@
 					]
 				}
 			],
+			"description": "This folder contains Wi-Fi related endpoints.",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -2441,7 +2497,6 @@
 		},
 		{
 			"name": "Static Files",
-			"description": "This folder contains a list of static files stored in Home.",
 			"item": [
 				{
 					"name": "Legal Notice",
@@ -2463,7 +2518,6 @@
 					},
 					"response": [
 						{
-							"id": "86f61ccd-2a90-4d5c-96d4-453431a0cdbf",
 							"name": "Default",
 							"originalRequest": {
 								"method": "GET",
@@ -2541,6 +2595,7 @@
 					"response": []
 				}
 			],
+			"description": "This folder contains a list of static files stored in Home.",
 			"event": [
 				{
 					"listen": "prerequest",

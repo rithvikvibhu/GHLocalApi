@@ -1,6 +1,6 @@
 # [Google Home Local API Documentation](https://rithvikvibhu.github.io/GHLocalApi/)
 
-**Updated on: 2018-06-20**  
+**Updated on: 2018-09-30**  
 Available here: https://rithvikvibhu.github.io/GHLocalApi/
 
 [![Build Status](https://travis-ci.org/rithvikvibhu/GHLocalApi.svg?branch=master)](https://travis-ci.org/rithvikvibhu/GHLocalApi)

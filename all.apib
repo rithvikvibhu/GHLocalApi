@@ -49,7 +49,7 @@ The `options` GET parameter is always set to `detail`. No other value is known.
         + Sample: detail
 
 + Response 200 (application/json)
-    + Attributes (Eureka InfoResponse)
+    + Attributes (Default)
 
     + Body
 
@@ -81,7 +81,7 @@ Not sure what the other two are.
 
 
 + Response 200 (application/json)
-    + Attributes (App Device IDResponse)
+    + Attributes (Default24)
 
     + Body
 
@@ -104,7 +104,7 @@ This gives a token which is used by the Home app to get offers. The offers thems
 A new token is generated for every request.
 
 + Response 200 (application/json)
-    + Attributes (OfferResponse)
+    + Attributes (Default25)
 
     + Body
 
@@ -115,6 +115,11 @@ A new token is generated for every request.
 ## Assistant Check Ready Status [/setup/assistant/check_ready_status]
 
 ### Check Ready Status [POST]
+**Update:** This seems to have changed now and is no longer possible. The error is also new.
+
+
+
+Setting `play_ready_message` to true plays a welcome message on the device saying "Hi, I'm your Google Assistant. I'm here to help. To learn a few things you can do, continue in the Google Home app."
 
 + Request (application/json)
     + Attributes (Check Ready StatusRequest)
@@ -122,13 +127,17 @@ A new token is generated for every request.
     + Body
 
             {
-                "play_ready_message": false,
+                "play_ready_message": true,
                 "user_id": "xxxxx"
             }
 
 
-+ Response 200 
++ Response 200 (application/json)
+    + Attributes (Default27)
 
+    + Body
+
+            {"can_enroll":false,"enrollment_state":8,"error":"NEED_RELINK","error_code":7,"ready":false,"retryable":false}
 
 
 
@@ -138,7 +147,7 @@ A new token is generated for every request.
 Simply returns a list of all supported timezones.
 
 + Response 200 (application/json)
-    + Attributes (array[TimezonesResponse])
+    + Attributes (array[Default28])
 
     + Body
 
@@ -152,11 +161,35 @@ Simply returns a list of all supported timezones.
 Simply returns a list of all supported locales.
 
 + Response 200 (application/json)
-    + Attributes (array[LocalesResponse])
+    + Attributes (array[Default29])
 
     + Body
 
             [{"display_string":"Amharic - አማርኛ","locale":"am"},{"display_string":"Arabic - العربية","locale":"ar"},{"display_string":"Bulgarian - български","locale":"bg"},{"display_string":"Bangla - বাংলা","locale":"bn"},{"display_string":"Catalan - català","locale":"ca"},{"display_string":"Czech - čeština","locale":"cs"},{"display_string":"Danish - dansk","locale":"da"},{"display_string":"German - Deutsch","locale":"de"},{"display_string":"Greek - Ελληνικά","locale":"el"},{"display_string":"English (United Kingdom)","locale":"en-GB"},{"display_string":"English (United States)","locale":"en-US"},{"display_string":"Spanish - español","locale":"es"},{"display_string":"Estonian - eesti","locale":"et"},{"display_string":"Persian - فارسی","locale":"fa"},{"display_string":"Finnish - suomi","locale":"fi"},{"display_string":"Filipino","locale":"fil"},{"display_string":"French - français","locale":"fr"},{"display_string":"Gujarati - ગુજરાતી","locale":"gu"},{"display_string":"Hebrew - עברית","locale":"he"},{"display_string":"Hindi - हिन्दी","locale":"hi"},{"display_string":"Croatian - hrvatski","locale":"hr"},{"display_string":"Hungarian - magyar","locale":"hu"},{"display_string":"Indonesian - Indonesia","locale":"id"},{"display_string":"Italian - italiano","locale":"it"},{"display_string":"Japanese - 日本語","locale":"ja"},{"display_string":"Kannada - ಕನ್ನಡ","locale":"kn"},{"display_string":"Korean - 한국어","locale":"ko"},{"display_string":"Lithuanian - lietuvių","locale":"lt"},{"display_string":"Latvian - latviešu","locale":"lv"},{"display_string":"Malayalam - മലയാളം","locale":"ml"},{"display_string":"Marathi - मराठी","locale":"mr"},{"display_string":"Malay - Melayu","locale":"ms"},{"display_string":"Norwegian Bokmål - norsk bokmål","locale":"nb"},{"display_string":"Dutch - Nederlands","locale":"nl"},{"display_string":"Polish - polski","locale":"pl"},{"display_string":"Portuguese (Portugal) - português (Portugal)","locale":"pt-PT"},{"display_string":"Romanian - română","locale":"ro"},{"display_string":"Russian - русский","locale":"ru"},{"display_string":"Slovak - slovenčina","locale":"sk"},{"display_string":"Slovenian - slovenščina","locale":"sl"},{"display_string":"Serbian - српски","locale":"sr"},{"display_string":"Swedish - svenska","locale":"sv"},{"display_string":"Swahili - Kiswahili","locale":"sw"},{"display_string":"Tamil - தமிழ்","locale":"ta"},{"display_string":"Telugu - తెలుగు","locale":"te"},{"display_string":"Thai - ไทย","locale":"th"},{"display_string":"Turkish - Türkçe","locale":"tr"},{"display_string":"Ukrainian - українська","locale":"uk"},{"display_string":"Vietnamese - Tiếng Việt","locale":"vi"},{"display_string":"Chinese (Simplified) - 中文（简体）","locale":"zh-CN"},{"display_string":"Chinese (Traditional) - 中文（繁體）","locale":"zh-TW"},{"display_string":"Spanish (Latin America) - español (Latinoamérica)","locale":"es-419"},{"display_string":"Portuguese (Brazil) - português (Brasil)","locale":"pt-BR"},{"display_string":"English (Australia)","locale":"en-AU"},{"display_string":"English (Canada)","locale":"en-CA"},{"display_string":"English (India)","locale":"en-IN"},{"display_string":"English (Singapore)","locale":"en-SG"},{"display_string":"Spanish (United States) - español (Estados Unidos)","locale":"es-US"},{"display_string":"French (Canada) - français (Canada)","locale":"fr-CA"}]
+
+
+
+## Test Internet Download Speed [/setup/test_internet_download_speed]
+
+### Test Internet Download Speed [POST]
+This endpoint tests internet download speed. Any sample file URL can be provided.
+
++ Request (application/json)
+    + Attributes (Test Internet Download SpeedRequest)
+
+    + Body
+
+            {
+                "url": "https://storage.googleapis.com/reliability-speedtest/random.txt"
+            }
+
+
++ Response 200 (application/json)
+    + Attributes (Default31)
+
+    + Body
+
+            {"bytes_received":31457280,"response_code":200,"time_for_data_fetch":4722,"time_for_http_response":316}
 
 
 
@@ -248,7 +281,7 @@ If `enabled` is set to false, night mode is disabled and the other values do not
 
 
 + Response 200 (application/json)
-    + Attributes (Night Mode settingsResponse)
+    + Attributes (Default37)
 
     + Body
 
@@ -261,7 +294,7 @@ If `enabled` is set to false, night mode is disabled and the other values do not
 ### Reboot and Factory Reset [POST]
 This can simply reboot the device (`params: "now"`) or factory reset the device (`params: "fdr"`).
 
-+ Request Reboot (application/json)
++ Request (application/json)
     + Attributes (Reboot and Factory ResetRequest)
 
     + Body
@@ -317,7 +350,7 @@ This is for the Do Not Disturb option. Sending an empty-body POST returns the cu
 
 
 + Response 200 (application/json)
-    + Attributes (Do Not DisturbRequest)
+    + Attributes (Get current state)
 
     + Body
 
@@ -325,7 +358,7 @@ This is for the Do Not Disturb option. Sending an empty-body POST returns the cu
 
 
 + Request Set new state (application/json)
-    + Attributes (Do Not DisturbResponse)
+    + Attributes (Get current state)
 
     + Body
 
@@ -333,7 +366,7 @@ This is for the Do Not Disturb option. Sending an empty-body POST returns the cu
     
 
 + Response 200 (application/json)
-    + Attributes (Do Not DisturbResponse)
+    + Attributes (Get current state)
 
     + Body
 
@@ -355,7 +388,7 @@ Either of the fields or both can be sent and new values will be saved.
 
 
 + Response 200 (application/json)
-    + Attributes (AccessibilityResponse)
+    + Attributes (AccessibilityRequest)
 
     + Body
 
@@ -374,7 +407,7 @@ Either of the fields or both can be sent and new values will be saved.
 
 
 + Response 200 (application/json)
-    + Attributes (AccessibilityResponse)
+    + Attributes (AccessibilityRequest)
 
     + Body
 
@@ -404,7 +437,7 @@ Timers have `original_duration` is the original duration.
 `status` is 1 for set up and 3 for ringing.
 
 + Response 200 (application/json)
-    + Attributes (Get Alarms and TimersResponse)
+    + Attributes (Default43)
 
     + Body
 
@@ -435,7 +468,7 @@ This deletes alarms and timers by their id.
 
 
 + Response 200 (application/json)
-    + Attributes (Delete Alarms and TimersResponse)
+    + Attributes (Default49)
 
     + Body
 
@@ -461,7 +494,7 @@ Sending an empty body gets the volume. Sending `volume` sets the volume.
 
 
 + Response 200 (application/json)
-    + Attributes (Alarm VolumeResponse)
+    + Attributes (Alarm VolumeRequest)
 
     + Body
 
@@ -479,7 +512,7 @@ Sending an empty body gets the volume. Sending `volume` sets the volume.
 
 
 + Response 200 (application/json)
-    + Attributes (Alarm VolumeResponse)
+    + Attributes (Alarm VolumeRequest)
 
     + Body
 
@@ -498,9 +531,13 @@ The body is mandatory. It can either contain `low_shelf` or `high_shelf` or both
 
 
 
-`low_shelf.gain_db` is an integer ranging from -6 to +6 for bass.
+`low_shelf.gain_db` and `high_shelf.gain_db` refer to **bass** and **treble** respectively.
 
-`high_shelf.gain_db` is an integer ranging from -6 to +6 for treble.
+
+
+Default values are 0 for both.  
+
+While the slider in the Home app only ranges from -6 to +6, they can be set to any integer like 50 or -100. These changes persist.
 
 + Request (application/json)
     + Attributes (Set Equalizer ValuesRequest)
@@ -519,11 +556,18 @@ The body is mandatory. It can either contain `low_shelf` or `high_shelf` or both
 
 + Response 200 
 
+    + Headers
+
+            Access-Control-Allow-Headers:Content-Type
+            Cache-Control:no-cache
+            Content-Length:0
+
+    + Attributes (object)
 
 
 
 
-# Group Bluetooth TODO
+# Group Bluetooth
 
 ## Bluetooth Status [/setup/bluetooth/status]
 
@@ -560,20 +604,24 @@ Not sure what `audio_mode` is.
 
 `discovery_enabled` states whether Home is discoverable. (**Part 1**)  
 
-`scanning_enabled` states whether Home scanning for other bluetooth speakers/devices. (**Part 2**)
+`connecting_devices` is a list of all media sources (like phones) connected to Home. (**Part 1**)  
+
+`scanning_enabled` states whether Home scanning for other bluetooth speakers/devices. (**Part 2**)  
+
+`connected_devices` is a list of all speakers connected to Home. (**Part 2**)
 
 + Response 200 (application/json)
-    + Attributes (StatusResponse)
+    + Attributes (Default55)
 
     + Body
 
-            {"audio_mode":1,"connected_devices":[],"connecting_devices":[],"discovery_enabled":false,"scanning_enabled":false}
+            {"audio_mode":0,"connecting_devices":[],"connected_devices":[{"device":{"bond_date":1529248165656.613,"device_class":2491396,"device_type":1,"last_connect_date":0,"mac_address":"xx:xx:xx:xx:xx:xx","name":"PHILIPS BT64","rssi":-255,"service_uuids":["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]},"enabled_profiles":2}],"remote_sink":{"bond_date":1529248165656.613,"device_class":2491396,"device_type":1,"last_connect_date":0,"mac_address":"xx:xx:xx:xx:xx:xx","name":"PHILIPS BT64","rssi":-255,"service_uuids":["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]},"discovery_enabled":false,"scanning_enabled":false}
 
 
 
 ## Bluetooth Get Bonded [/setup/bluetooth/get_bonded]
 
-### Get Paired Devices TODO [GET]
+### Get Paired Devices [GET]
 *See note for Bluetooth under `/setup/bluetooth/status`*
 
 
@@ -582,10 +630,10 @@ Not sure what `audio_mode` is.
 
 
 
-This gives a list of all paired or 'bonded' devices.
+This gives a list of all paired or 'bonded' devices. The response field names are self-descriptive.
 
 + Response 200 (application/json)
-    + Attributes (array[Get Paired Devices TODOResponse])
+    + Attributes (array[Default59])
 
     + Body
 
@@ -596,7 +644,7 @@ This gives a list of all paired or 'bonded' devices.
 ## Bluetooth Bond [/setup/bluetooth/bond]
 
 ### Forget paired device [POST]
-*See note for Bluetooth under /setup/bluetooth/status*
+*See note for Bluetooth under `/setup/bluetooth/status`*
 
 
 
@@ -625,7 +673,7 @@ This is to forget paired devices by mac address. Works for both kinds of devices
 ## Bluetooth Discovery [/setup/bluetooth/discovery]
 
 ### Change Discoverability [POST]
-*See note for Bluetooth under /setup/bluetooth/status*
+*See note for Bluetooth under `/setup/bluetooth/status`*
 
 
 
@@ -636,6 +684,8 @@ This is to forget paired devices by mac address. Works for both kinds of devices
 This enables/disables Home's bluetooth discovery and other devices can pair with Home (where Home acts as a speaker).
 
 + Request Set discoverable (application/json)
+    + Attributes (Change DiscoverabilityRequest)
+    
     + Body
 
             {
@@ -648,6 +698,8 @@ This enables/disables Home's bluetooth discovery and other devices can pair with
 
 
 + Request Set non-discoverable (application/json)
+    + Attributes (Change DiscoverabilityRequest)
+    
     + Body
 
             {
@@ -663,7 +715,7 @@ This enables/disables Home's bluetooth discovery and other devices can pair with
 ## Bluetooth Scan [/setup/bluetooth/scan]
 
 ### Scan for devices [POST]
-*See note for Bluetooth under /setup/bluetooth/status*
+*See note for Bluetooth under `/setup/bluetooth/status`*
 
 
 
@@ -702,7 +754,7 @@ To get the scan results, see /setup/bluetooth/scan_results.
 ## Bluetooth Scan Results [/setup/bluetooth/scan_results]
 
 ### Get Scan Results [GET]
-*See note for Bluetooth under /setup/bluetooth/status*
+*See note for Bluetooth under `/setup/bluetooth/status`*
 
 
 
@@ -716,21 +768,25 @@ This returns a list of all nearby bluetooth devices. While the Home app only sho
 
 `rssi` is signal strength, `name` is name, `mac_address` is mac address.  
 
-`device_class` and `device_type` still need testing. #TODO
+`device_class` and `device_type` are bluetooth codes.  
+
+
+
+The Home app only lists those devices with `expected_profiles` > 0. Basically, the device should function speaker.
 
 + Response 200 (application/json)
-    + Attributes (array[Get Scan ResultsResponse])
+    + Attributes (array[Default63])
 
     + Body
 
-            [{"device_class":525372,"device_type":3,"expected_profiles":0,"mac_address":"54:13:79:49:19:22","name":"KD-49X8200E","rssi":-90},{"device_class":5898764,"device_type":1,"expected_profiles":0,"mac_address":"94:14:7a:5c:62:a3","name":"vivo 1714","rssi":-96},{"device_class":2491396,"device_type":1,"expected_profiles":1,"mac_address":"94:14:7a:5c:62:a3","name":"PHILIPS BT64","rssi":-93}]
+            [{"device_class":525372,"device_type":3,"expected_profiles":0,"mac_address":"xx:xx:xx:xx:xx:xx","name":"KD-49X8200E","rssi":-90},{"device_class":5898764,"device_type":1,"expected_profiles":0,"mac_address":"xx:xx:xx:xx:xx:xx","name":"vivo 1714","rssi":-96},{"device_class":2491396,"device_type":1,"expected_profiles":1,"mac_address":"xx:xx:xx:xx:xx:xx","name":"Bluetooth Speaker","rssi":-93}]
 
 
 
 ## Bluetooth Connect [/setup/bluetooth/connect]
 
 ### Pair with Speaker [POST]
-*See note for Bluetooth under /setup/bluetooth/status*
+*See note for Bluetooth under `/setup/bluetooth/status`*
 
 
 
@@ -754,6 +810,13 @@ This pairs with other bluetooth speakers by mac address.
 
 + Response 200 
 
+    + Headers
+
+            Access-Control-Allow-Headers:Content-Type
+            Cache-Control:no-cache
+            Content-Length:0
+
+    + Attributes (object)
 
 
 
@@ -774,7 +837,7 @@ Each network has `ssid`, `wpa_auth`, `wpa_cipher` and `wpa_id`.
 #TODO: Add values for `wpa_auth` and `wpa_cipher`.
 
 + Response 200 (application/json)
-    + Attributes (array[Get Saved NetworksResponse])
+    + Attributes (array[Default65])
 
     + Body
 
@@ -802,7 +865,7 @@ For Chromecasts, this is required to populate results. For Google Home, this is 
 This gets a list of all nearby Wi-Fi access points.
 
 + Response 200 (application/json)
-    + Attributes (array[Get WiFi Scan ResultsResponse])
+    + Attributes (array[Default66])
 
     + Body
 
@@ -856,9 +919,32 @@ This is to forget a saved network by `wpa_id`. Get the `wpa_id` from /setup/conf
 
 
 
+# Group Static Files
+
+## NOTICEHtmlGz [/setup/NOTICE.html.gz]
+
+### Legal Notice [GET]
+All licenses of programs used by Home.
+
++ Response 200 
+    + Attributes (object)
+
+
+
+## IconPng [/setup/icon.png]
+
+### Chromecast Icon [GET]
+A redirect to `http://www.gstatic.com/eureka/images/eureka_device.png`
+
++ Response 200 
+
+
+
+
+
 # Data Structures
 
-## Eureka InfoResponse (object)
+## Default (object)
 
 
 ### Properties
@@ -1156,7 +1242,7 @@ This is to forget a saved network by `wpa_id`. Get the `wpa_id` from /setup/conf
 + `app_id`: `E8C28D3C` (string, required) 
 
 
-## App Device IDResponse (object)
+## Default24 (object)
 
 
 ### Properties
@@ -1187,7 +1273,7 @@ qwp7/thZVuJIg+BZOeb0
 + `signed_data`: `HAjp4Jqm6vKiIsQxAIF6jHmVSomqW4gC5W67OY1NzhPnmCQW2pjF2hWnaeTXwkd3DlI4tu+VsLR8q9pfEAV1KAJseku43f3iT6mg7etJ5HMym6y97ri4LB2tva1dxfK3YhIPVyGdEc4s2O+eTrI6kmY1nXxXLKuTeF8Hg+Akp2eOREljj+KNwVa+LA5EWtcA3Lq09qAfBcWj0fu+A1Gxi1YZNvDfjcrz3SF32hzXHl24xADxvbnlJ6O0atQNqvybB5ENaaqOoSoRct9JhuVRT8EkJd3MWm3gwADEA3hP11Oo8m3GIuBhcF3VBt946035kg9rf+9GLF+fme2sJQBGuA==` (string, required) 
 
 
-## OfferResponse (object)
+## Default25 (object)
 
 
 ### Properties
@@ -1198,11 +1284,23 @@ qwp7/thZVuJIg+BZOeb0
 
 
 ### Properties
-+ `play_ready_message`: `false` (boolean, required) 
++ `play_ready_message`: `true` (boolean, required) 
 + `user_id`: `xxxxx` (string, required) 
 
 
-## TimezonesResponse (object)
+## Default27 (object)
+
+
+### Properties
++ `can_enroll`: `false` (boolean, required) 
++ `enrollment_state`: `8` (number, required) 
++ `error`: `NEED_RELINK` (string, required) 
++ `error_code`: `7` (number, required) 
++ `ready`: `false` (boolean, required) 
++ `retryable`: `false` (boolean, required) 
+
+
+## Default28 (object)
 
 
 ### Properties
@@ -1211,7 +1309,7 @@ qwp7/thZVuJIg+BZOeb0
 + `timezone`: `Pacific/Midway` (string, required) 
 
 
-## LocalesResponse (object)
+## Default29 (object)
 
 
 ### Properties
@@ -1219,23 +1317,40 @@ qwp7/thZVuJIg+BZOeb0
 + `locale`: `am` (string, required) 
 
 
+## Test Internet Download SpeedRequest (object)
+
+
+### Properties
++ `url`: `https://storage.googleapis.com/reliability-speedtest/random.txt` (string, required) 
+
+
+## Default31 (object)
+
+
+### Properties
++ `bytes_received`: `31457280` (number, required) 
++ `response_code`: `200` (number, required) 
++ `time_for_data_fetch`: `4722` (number, required) 
++ `time_for_http_response`: `316` (number, required) 
+
+
 ## Set Eureka InfoRequest (object)
 
 
 ### Properties
 + `name`: `Living Room` (string, required) 
-+ `settings`: `Living Room` (Settings30, required) 
-+ `opt_in`: `Living Room` (OptIn31, required) 
++ `settings`: `Living Room` (Settings33, required) 
++ `opt_in`: `Living Room` (OptIn34, required) 
 
 
-## Settings30 (object)
+## Settings33 (object)
 
 
 ### Properties
 + `control_notifications`: `2` (number, required) 
 
 
-## OptIn31 (object)
+## OptIn34 (object)
 
 
 ### Properties
@@ -1257,7 +1372,7 @@ qwp7/thZVuJIg+BZOeb0
 + `windows`: `true` (array[Window], required) 
 
 
-## Night Mode settingsResponse (object)
+## Default37 (object)
 
 
 ### Properties
@@ -1265,10 +1380,10 @@ qwp7/thZVuJIg+BZOeb0
 + `enabled`: `false` (boolean, required) 
 + `led_brightness`: `0.449999988079071` (number, required) 
 + `volume`: `0.46000000834465` (number, required) 
-+ `windows`: `0.46000000834465` (array[Window35], required) 
++ `windows`: `0.46000000834465` (array[Window38], required) 
 
 
-## Window35 (object)
+## Window38 (object)
 
 
 ### Properties
@@ -1292,14 +1407,7 @@ qwp7/thZVuJIg+BZOeb0
 + `params`: `now` (string, required) 
 
 
-## Do Not DisturbRequest (object)
-
-
-### Properties
-+ `notifications_enabled`: `true` (boolean, required) 
-
-
-## Do Not DisturbResponse (object)
+## Get current state (object)
 
 
 ### Properties
@@ -1314,7 +1422,7 @@ qwp7/thZVuJIg+BZOeb0
 + `endpoint_enabled`: `false` (boolean, required) 
 
 
-## AccessibilityResponse (object)
+## Get current values (object)
 
 
 ### Properties
@@ -1322,7 +1430,7 @@ qwp7/thZVuJIg+BZOeb0
 + `hotword_enabled`: `false` (boolean, required) 
 
 
-## Get Alarms and TimersResponse (object)
+## Default43 (object)
 
 
 ### Properties
@@ -1379,7 +1487,7 @@ qwp7/thZVuJIg+BZOeb0
 ]` (array[string], required) 
 
 
-## Delete Alarms and TimersResponse (object)
+## Default49 (object)
 
 
 ### Properties
@@ -1393,7 +1501,7 @@ qwp7/thZVuJIg+BZOeb0
 + `volume`: `1` (number, required) 
 
 
-## Alarm VolumeResponse (object)
+## Get volume (object)
 
 
 ### Properties
@@ -1404,36 +1512,87 @@ qwp7/thZVuJIg+BZOeb0
 
 
 ### Properties
-+ `low_shelf` (LowShelf50, required) 
-+ `high_shelf` (HighShelf51, required) 
++ `low_shelf` (LowShelf53, required) 
++ `high_shelf` (HighShelf54, required) 
 
 
-## LowShelf50 (object)
-
-
-### Properties
-+ `gain_db`: `0` (number, required) 
-
-
-## HighShelf51 (object)
+## LowShelf53 (object)
 
 
 ### Properties
 + `gain_db`: `0` (number, required) 
 
 
-## StatusResponse (object)
+## HighShelf54 (object)
 
 
 ### Properties
-+ `audio_mode`: `1` (number, required) 
-+ `connected_devices`: `[]` (array[string], required) 
++ `gain_db`: `0` (number, required) 
+
+
+## Default55 (object)
+
+
+### Properties
++ `audio_mode`: `0` (number, required) 
 + `connecting_devices`: `[]` (array[string], required) 
++ `connected_devices`: `[]` (array[ConnectedDevice], required) 
++ `remote_sink`: `[]` (RemoteSink, required) 
 + `discovery_enabled`: `false` (boolean, required) 
 + `scanning_enabled`: `false` (boolean, required) 
 
 
-## Get Paired Devices TODOResponse (object)
+## ConnectedDevice (object)
+
+
+### Properties
++ `device` (Device, required) 
++ `enabled_profiles`: `2` (number, required) 
+
+
+## Device (object)
+
+
+### Properties
++ `bond_date`: `1529248165656.61` (number, required) 
++ `device_class`: `2491396` (number, required) 
++ `device_type`: `1` (number, required) 
++ `last_connect_date`: `0` (number, required) 
++ `mac_address`: `xx:xx:xx:xx:xx:xx` (string, required) 
++ `name`: `PHILIPS BT64` (string, required) 
++ `rssi`: `-255` (number, required) 
++ `service_uuids`: `[
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+]` (array[string], required) 
+
+
+## RemoteSink (object)
+
+
+### Properties
++ `bond_date`: `1529248165656.61` (number, required) 
++ `device_class`: `2491396` (number, required) 
++ `device_type`: `1` (number, required) 
++ `last_connect_date`: `0` (number, required) 
++ `mac_address`: `xx:xx:xx:xx:xx:xx` (string, required) 
++ `name`: `PHILIPS BT64` (string, required) 
++ `rssi`: `-255` (number, required) 
++ `service_uuids`: `[
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+]` (array[string], required) 
+
+
+## Default59 (object)
 
 
 ### Properties
@@ -1474,14 +1633,14 @@ qwp7/thZVuJIg+BZOeb0
 + `timeout`: `60` (number, required) 
 
 
-## Get Scan ResultsResponse (object)
+## Default63 (object)
 
 
 ### Properties
 + `device_class`: `525372` (number, required) 
 + `device_type`: `3` (number, required) 
 + `expected_profiles`: `0` (number, required) 
-+ `mac_address`: `54:13:79:49:19:22` (string, required) 
++ `mac_address`: `xx:xx:xx:xx:xx:xx` (string, required) 
 + `name`: `KD-49X8200E` (string, required) 
 + `rssi`: `-90` (number, required) 
 
@@ -1495,7 +1654,7 @@ qwp7/thZVuJIg+BZOeb0
 + `profile`: `2` (number, required) 
 
 
-## Get Saved NetworksResponse (object)
+## Default65 (object)
 
 
 ### Properties
@@ -1505,7 +1664,7 @@ qwp7/thZVuJIg+BZOeb0
 + `wpa_id`: `0` (number, required) 
 
 
-## Get WiFi Scan ResultsResponse (object)
+## Default66 (object)
 
 
 ### Properties
