@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "aglio": "^2.3.0",
-    "fs-extra": "^6.0.1"
+    "fs-extra": "^9.0.1"
   }
 }
