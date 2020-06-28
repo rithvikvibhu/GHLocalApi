@@ -1,23 +1,23 @@
 language: node_js
 node_js:
-  - "8"
+  - '12'
 
 install:
-  -  npm install
-  
+  - npm install
+
 script:
-  -  mkdir dist
-  -  npm run dist
-  -  sed -i dist/index.html -f gatracking.sed
+  - mkdir dist
+  - npm run build
+  - sed -i dist/index.html -f gatracking.sed
 
 deploy:
-    provider: pages
-    skip_cleanup: true
-    github_token: $GH_TOKEN
-    local_dir: dist/
-    on:
-        branch: master
-        
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  local_dir: dist/
+  on:
+    branch: master
+
 branches:
   only:
-  - master
+    - master

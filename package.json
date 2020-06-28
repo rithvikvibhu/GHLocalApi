@@ -1,16 +1,17 @@
 {
   "name": "ghlocalapi",
   "description": "Documentation for Google Home's local API",
-  "version": "1.0.0",
-  "main": "apib2html.js",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rithvikvibhu/GHLocalApi.git"
   },
   "keywords": [
     "google-home",
-    "api-blueprint",
-    "aglio"
+    "api-documentation",
+    "openapi3",
+    "redoc",
+    "iot"
   ],
   "author": "Rithvik Vibhu <rithvikvibhu@gmail.com> (https://keybase.io/rithvikvibhu)",
   "license": "MIT",
@@ -19,10 +20,10 @@
   },
   "homepage": "https://github.com/rithvikvibhu/GHLocalApi#readme",
   "scripts": {
-    "dist": "node ./apib2html.js"
+    "build": "redoc-cli bundle --ssr --title 'Google Home Local API' --output dist/index.html GoogleHome.openapi3.json",
+    "serve": "redoc-cli serve --ssr --title 'Google Home Local API' GoogleHome.openapi3.json"
   },
   "dependencies": {
-    "aglio": "^2.3.0",
-    "fs-extra": "^6.0.1"
+    "redoc-cli": "^0.9.8"
   }
 }

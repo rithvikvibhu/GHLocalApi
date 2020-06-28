@@ -1,5 +1,2 @@
-*.html
-raw.txt
-
-node_modules
-dist
+node_modules/
+dist/

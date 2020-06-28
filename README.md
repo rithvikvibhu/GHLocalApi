@@ -1,19 +1,16 @@
 # [Google Home Local API Documentation](https://rithvikvibhu.github.io/GHLocalApi/)
 
-**Updated on: 2018-09-30**  
+**Updated on: 2020-06-28**
 Available here: https://rithvikvibhu.github.io/GHLocalApi/
 
-[![Build Status](https://travis-ci.org/rithvikvibhu/GHLocalApi.svg?branch=master)](https://travis-ci.org/rithvikvibhu/GHLocalApi)
+[![GitHub stars](https://img.shields.io/github/stars/rithvikvibhu/GHLocalApi)](https://github.com/rithvikvibhu/GHLocalApi/stargazers) [![GitHub license](https://img.shields.io/github/license/rithvikvibhu/GHLocalApi)](https://github.com/rithvikvibhu/GHLocalApi/blob/master/LICENSE.md) [![Build Status](https://travis-ci.org/rithvikvibhu/GHLocalApi.svg?branch=master)](https://travis-ci.org/rithvikvibhu/GHLocalApi)
 
-Documentation for Google Home's local API, written in [API Blueprint](https://apiblueprint.org/) and rendered with [danielgtaylor/aglio](https://github.com/danielgtaylor/aglio).
+Documentation for Google Home's local API, specs in [OpenAPI 3.0](https://swagger.io/specification/). Rendered with [Redoc](https://github.com/Redocly/redoc).
 
-The API Blueprint is in `all.apib`.
+Travis CI generates the static website with Redoc.
 
-A postman collection (v2.1) is also available for import (`GoogleHome.postman_collection.json`). Set a Global or Environment variable called `url` with the IP address of the device and port 8008. Example: `http://192.168.1.15:8008`
+- `npm run build` generates the static site in the 'dist' folder (Make sure the folder exists).
+- `npm run serve` serves the page with a web server.
 
 ## Contributing
-
-* This project is created in [Postman](https://www.getpostman.com/) and exported to [API Blueprint format](https://apiblueprint.org/) using [APIMATIC's Transformer API](https://apimatic.io/transformer).
-* This project makes use of [aglio](https://github.com/danielgtaylor/aglio), which is an API Blueprint renderer. Here are the [instructions](https://github.com/danielgtaylor/aglio#installation--usage) to getting aglio set up.
-* Travis-ci generates the static website with aglio.
-* `npm run dist` generates the static site in the 'dist' folder (Make sure the folder exists).
+The Open API spec is exported from Apimatic. Instead of submitting pull requests with changes to this file, please create an issue with the changes instead.
