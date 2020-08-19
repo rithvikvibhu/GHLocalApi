@@ -24,6 +24,6 @@
     "serve": "redoc-cli serve --ssr --title 'Google Home Local API' GoogleHome.openapi3.json"
   },
   "dependencies": {
-    "redoc-cli": "^0.9.10"
+    "redoc-cli": "^0.9.11"
   }
 }
