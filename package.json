@@ -24,6 +24,6 @@
     "serve": "redoc-cli serve -t template.hbs --title 'Google Home Local API' --ssr GoogleHome.openapi3.json"
   },
   "dependencies": {
-    "redoc-cli": "^0.13.18"
+    "redoc-cli": "^0.13.20"
   }
 }
